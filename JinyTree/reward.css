@@ -1,0 +1,13 @@
+body{
+    text-align: center;
+    background-color: rgba(36, 161, 113, 0.603);
+}
+.search-bar{
+    width: 250px;
+}
+
+header{
+    color: white;
+    background-color: rgb(15, 17, 15);
+    
+}

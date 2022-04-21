@@ -7,95 +7,146 @@
     <title>지니나무 메뉴</title>
     <link rel="stylesheet" href="menu.css">
 </head>
-<body style="margin-left: 50px;margin-right: 50px;margin-bottom: 1000px;">
+<body style="margin-bottom: 100px;">
     <header>
         <h1>
             메뉴
         </h1>
-        <span><h4>*온도와 사이즈를 선택하시면 자동으로 장바구니에 담겨요!</h4></span>
+        <block><h4>아이스 + 500원, L + 1000원</h4></block>
+        <h4>1. 온도 선택</h4><h4>2. 크기 선택</h4><h4>3. 원하는 만큼 담고 아래 결제하기 버튼 클릭!</h4>
     </header>
 
-    <section>
-    <h1>커피</h1>
-        <div1>
-            <h3 class="americano">아메리카노
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-            <h3 class="coldbrew">콜드브루
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-            <h3 class="cafelatte">카페라떼
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-            <h3 class="topinut">토피넛라떼
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-        </div1>
-    
-    <h1>차</h1>
-        <div2>
-            <h3 class="kamomile">카모마일
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-            <h3 class="redpeper">레드페퍼
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-            <h3 class="jasmin">자스민
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-            <h3 class="hurb">허브
-                <button id="HOT">HOT</button>
-                <button id="COLD">COLD</button>
-                <button>M</button>
-                <button>L</button>
-            </h3>
-        </div>
-    </h1>
-    <h1>에이드</h1>
+    <main>
+        <h1>커피</h1>
+            <div1>
+                <article id="cButton">
+                    <p>온도를 정해주세요!</p>
+                    <button class="ctype">뜨거운</button>
+                    <input type="button" value="아이스" onclick="addice()">
+                </article>
+                <h3 class="americano">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[94]_20210430103337006.jpg"></img>
+                        <div id="menu-name">아메리카노
+                            <button id="middle">M</button>
+                            <button id="middle">L</button>
+                            <div id="menu_price">price M=3,000원 L=4,000원</div>
+                        </div>
+                        
+                </h3>
+                <h3 class="coldbrew">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000038]_20210430113202458.jpg">
+                    <div id="menu-name">콜드브루
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+                <h3 class="cafelatte">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[41]_20210415133833725.jpg">
+                    <div id="menu-name">카페라떼
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+                <h3 class="topinut">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[126197]_20210415154609863.jpg"></img>
+                    <div id="menu-name">카라멜마끼야또
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+            </div1>
+        
+        <h1>차</h1>
+            <div2>
+                <article id="cButton">
+                    <p>온도를 정해주세요!</p>
+                    <button class="ctype">뜨거운</button>
+                    <input type="button" value="아이스" onclick="addice()">
+                </article>
+                <h3 class="kamomile">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000076]_20210415154920731.jpg"></img>
+                    <div id="menu-name">캐모마일
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+                <h3 class="redpeper">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000016]_20210415153648533.jpg"></img>
+                    <div id="menu-name">블랙퍼스트 티
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+                <h3 class="jasmin">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2022/04/[9200000002956]_20220411155551915.jpg"></img>
+                    <div id="menu-name">유자차
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+                <h3 class="hurb">
+                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000187]_20210419131229539.jpg"></img>
+                    <div id="menu-name">자몽차
+                        <button id="middle">M</button>
+                        <button id="middle">L</button>
+                        <div id="menu_price">price M=3,000원 L=4,000원</div>
+                    </div>
+                </h3>
+            </div>
+        </h1>
+        
+        <h1>에이드
+        </h1>
         <div3>
-            <h3 class="remon">레몬에이드
-                <button>M</button>
-                <button>L</button>
+            <h3 class="remon">
+                <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[107025]_20210419104757108.jpg"></img>
+                <div id="menu-name">레몬에이드
+                    <button id="middle">M</button>
+                    <button id="middle">L</button>
+                    <div id="menu_price">price M=3,000원 L=4,000원</div>
+                </div>
             </h3>
-            <h3 class="apple">사과에이드
-                <button>M</button>
-                <button>L</button>
+            <h3 class="apple">
+                <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[107051]_20210419112152119.jpg"></img>
+                <div id="menu-name">라임에이드
+                    <button id="middle">M</button>
+                    <button id="middle">L</button>
+                    <div id="menu_price">price M=3,000원 L=4,000원</div>
+                </div>
             </h3>
-            <h3 class="jamon">자몽에이드
-                <button>M</button>
-                <button>L</button>
+            <h3 class="jamon">
+                <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000190]_20210419131723532.jpg"></img>
+                <div id="menu-name">자몽에이드
+                    <button id="middle">M</button>
+                    <button id="middle">L</button>
+                    <div id="menu_price">price M=3,000원 L=4,000원</div>
+                </div>
             </h3>
         </div3>
-    </section>
+    </main>
+
     <footer>
 
-
-        <h2>메뉴 구성
-            
-
-        </h2>
         
+        <h2 id="basket">
+            장바구니
+            <div class="basket">
+                추가되는 것들
+            </div>
+            <div>총 결제금액</div>
+        </h2>
+        <div id="pay-button-좌표">
+            <button id="pay_button">결제하기!</button>
+        </div>
     </footer>
+
+
+    <script src="menu.js"></script>
 </body>
 </html>

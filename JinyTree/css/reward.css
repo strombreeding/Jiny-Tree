@@ -1,0 +1,11 @@
+body{
+    text-align: center;
+}
+.search-bar{
+    width: 250px;
+}
+
+header{
+    color: white;
+    background-color: green;
+}

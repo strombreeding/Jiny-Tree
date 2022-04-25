@@ -6,9 +6,12 @@ h1 {
     margin-top: 0px;
     margin-bottom: 10px;
 }
-#middle{
-    height: 30px;
+.button{
+    left: 108px;
+    top: 15px;
     width: 45px;
+    height: 45px;
+    position: relative;
 }
 #cButton{
     text-align: center;
@@ -29,19 +32,25 @@ h1 {
 
 #menu-name{
     display: inline;
-    bottom: 80px;
+    bottom: 85px;
     position: relative;
 }
+
 .menu_price{
     left: 108px;
-    top: 45px;
+    top: 5px;
     position: relative;
 }
 .menu_price1{
     left: 108px;
-    top: 45px;
+    top: 5px;
     position: relative;
-}
+} 
+.menu_price_ade{
+    left: 108px;
+    top: 5px;
+    position: relative;
+} 
 .menu_pic{
     width: 100px;
     height: 100px;

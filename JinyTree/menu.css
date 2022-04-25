@@ -32,7 +32,12 @@ h1 {
     bottom: 80px;
     position: relative;
 }
-#menu_price{
+.menu_price{
+    left: 108px;
+    top: 45px;
+    position: relative;
+}
+.menu_price1{
     left: 108px;
     top: 45px;
     position: relative;

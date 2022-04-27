@@ -28,10 +28,9 @@ function addhot(){
         } 
     a=0;
 }   
-
-
 //사이즈 선택시 장바구니에 메뉴+사이즈+온도가 담기는 함수
-function reply_click(clicked_id){
+function reply_click(clicked_id){  
+    let sex = document.getElementById("myDiv"+clicked_id).id
     let 에이드= document.getElementsByClassName('에이드');
     let 배열 = [에이드[0].innerHTML,에이드[1].innerHTML,에이드[2].innerHTML,에이드[3].innerHTML,에이드[4].innerHTML,에이드[5].innerHTML];
     let b=["뜨거운","아이스"];
@@ -44,16 +43,15 @@ function reply_click(clicked_id){
         }
     }
     리턴();
-    if(true){
-        function order(b){
-            //사이즈 선택시 컨펌팝업, 컨펌시 장바구니로 이동
-            if(clicked_id){    
-                const opControl = document.getElementById("optionControl");
-                let scroll = confirm("장바구니에 "+clicked_id+" 담겼습니다.\n장바구니로 이동할까요?");
-                    if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});
-                    }else{undefined
-                    }
+    function order(b){
+        //사이즈 선택시 컨펌팝업, 컨펌시 장바구니로 이동
+        if(sex==("myDiv"+clicked_id)){ 
+            const opControl = document.getElementById("optionControl");
+            let scroll = confirm("장바구니에 "+clicked_id+" 담겼습니다.\n장바구니로 이동할까요?");
+                if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});
+                }else{undefined
                 }
+            
             //장바구니 위치에 새로운 div 생성
             obj = document.getElementById("optionControl");
             newDiv = document.createElement("div");     
@@ -63,11 +61,12 @@ function reply_click(clicked_id){
             +"<input style=width:20px; type='text' id='result' value=1></input>"
             +"<input type='button' onclick='count()' value = '+'><span class='연산' value='플'></span></input>"
             +" 개 "+"<date value ='0'>원</date></div>";   
-            newDiv.setAttribute("class", "myDiv");      
+            newDiv.setAttribute("id", "myDiv"+clicked_id);   //if 고유값 myDiv+clicked_id value = 0 반복 else 
             newDiv.style.backgroundColor = "rgba";      
-            obj.appendChild(newDiv);  
-            }
-        }        
+            obj.appendChild(newDiv);
+            }else{alert(clicked_id+"는(은)이미 담겨있습니다.")}
+        }
+
         if(s==1){
             order(b[1]);
             s=0;
@@ -79,6 +78,15 @@ function reply_click(clicked_id){
             order(b[a]);
             s=0;
         }
+
+        // console.log(typeof(장바구니중복방지+clicked_id));
+        // console.log(typeof(장바구니중복방지));
+        // console.log(장바구니중복방지+clicked_id) 
+        
+        console.log(typeof(document.getElementById("myDiv"+clicked_id).id));
+        console.dir(document.getElementById("myDiv"+clicked_id)+"qw");
+        console.log(sex);
+    
 }
 
 // function count(){

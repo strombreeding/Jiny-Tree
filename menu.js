@@ -1,36 +1,48 @@
 
 //
 let set_arr = new Set([]);
-let ea_item = []; //개당 수량으로
 let total_cnt = []; //총 수량으로 
 let add_temp=0; //addice(),addhot(),reply_click()에서 주로 사용됨
-let for_temp=["뜨거운","아이스"]; //order()에 사용됨
+let for_temp=["따뜻한","아이스"]; //order()에 사용됨
 let for_ade_temp= 0; //order()에 사용됨
 //rkruirt
-const menu_Lsize_arr = ["아이스 아메리카노L","아이스 콜드브루L","아이스 카페라떼L","아이스 카라멜마끼야또L","아이스 캐모마일L","아이스 블랙퍼스트L","아이스 유자차L","아이스 자몽차L","아이스 레몬에이드L","아이스 라임에이드L","아이스 자몽에이드L","뜨거운 아메리카노L","뜨거운 콜드브루L","뜨거운 카페라떼L","뜨거운 카라멜마끼야또L","뜨거운 캐모마일L","뜨거운 블랙퍼스트L","뜨거운 유자차L","뜨거운 자몽차L"];
-const premium_menu_arr = ["아이스 카페라떼M","아이스 카페라떼L","아이스 카라멜마끼야또M","아이스 카라멜마끼야또L", "뜨거운 카페라떼M","뜨거운 카페라떼L", "뜨거운 카라멜마끼야또M","뜨거운 카라멜마끼야또L"];
-const menu_arr = ["아이스 아메리카노M","아이스 콜드브루M","아이스 카페라떼M","아이스 카라멜마끼야또M","아이스 캐모마일M","아이스 블랙퍼스트M","아이스 유자차M","아이스 자몽차M","아이스 레몬에이드M","아이스 라임에이드M","아이스 자몽에이드M","뜨거운 아메리카노M","뜨거운 콜드브루M","뜨거운 카페라떼M","뜨거운 카라멜마끼야또M","뜨거운 캐모마일M","뜨거운 블랙퍼스트M","뜨거운 유자차M","뜨거운 자몽차M",];
+const menu_Lsize_arr = ["아이스 아메리카노L","아이스 콜드브루L","아이스 카페라떼L","아이스 카라멜마끼야또L","아이스 캐모마일L","아이스 블랙퍼스트L","아이스 유자차L","아이스 자몽차L","아이스 레몬에이드L","아이스 라임에이드L","아이스 자몽에이드L","따뜻한 아메리카노L","따뜻한 콜드브루L","따뜻한 카페라떼L","따뜻한 카라멜마끼야또L","따뜻한 캐모마일L","따뜻한 블랙퍼스트L","따뜻한 유자차L","따뜻한 자몽차L"];
+const premium_menu_arr = ["아이스 카페라떼M","아이스 카페라떼L","아이스 카라멜마끼야또M","아이스 카라멜마끼야또L", "따뜻한 카페라떼M","따뜻한 카페라떼L", "따뜻한 카라멜마끼야또M","따뜻한 카라멜마끼야또L"];
+const menu_arr = ["아이스 아메리카노M","아이스 콜드브루M","아이스 카페라떼M","아이스 카라멜마끼야또M","아이스 캐모마일M","아이스 블랙퍼스트M","아이스 유자차M","아이스 자몽차M","아이스 레몬에이드M","아이스 라임에이드M","아이스 자몽에이드M","따뜻한 아메리카노M","따뜻한 콜드브루M","따뜻한 카페라떼M","따뜻한 카라멜마끼야또M","따뜻한 캐모마일M","따뜻한 블랙퍼스트M","따뜻한 유자차M","따뜻한 자몽차M",];
 let ea_price = document.getElementsByName("sum");
 // ea_price1.push(ea_price)
 // let ea_price1=[];
+const iceadd_name =document.getElementsByClassName("menu_name"); //== '메뉴이름'.innerText    11개가있다.
+const hot_name = document.getElementsByClassName("hidden_name");  // == 
 
 
 
-//       아이스 클릭시 a=1, 뜨거운 아메리카노M클릭시 a=0
+
+//       클릭시 메뉴 가격,이름 변경
 function addice(){
+    const hidden_img = document.getElementsByName("hidden_img");
     alert('      아이스 추가+500원')
     let iceadd = document.getElementsByClassName("menu_price");
+    for (let i = 0; i < iceadd_name.length; i++) {
+        hidden_img[i].classList.remove("hidden_img");
+        hidden_img[i].classList.add("hidden_img_size")
+    }
     for (let i = 0; i < iceadd.length; i++) {
         iceadd[i].innerHTML = "price M=3,500원 L=4,500원";
-        }
+    }
     let iceadd2 = document.getElementsByClassName("menu_price1");
     for (let i = 0; i < iceadd2.length; i++) {
         iceadd2[i].innerHTML = "price M=4,000원 L=5,000원";
-        }
+    }
     add_temp=1;
+
 }    
 function addhot(){
     let hotadd = document.getElementsByClassName("menu_price");
+    for (let i = 0; i < iceadd_name.length; i++) {
+        hidden_img[i].classList.add("hidden_img")
+    }
+
     for (let i = 0; i < hotadd.length; i++) {
         hotadd[i].innerHTML = "price M=3,000원 L=4,000원";
     }
@@ -61,7 +73,7 @@ function reply_click(clicked_id){
     function order(for_temp){
         //사이즈 선택시 컨펌팝업, 컨펌시 장바구니로 이동
             const opControl = document.getElementById("optionControl");
-            let scroll = confirm("장바구니에 "+clicked_id+" 담겼습니다.\n장바구니로 이동할까요?");
+            let scroll = confirm("장바구니에 "+for_temp+clicked_id+" 담겼습니다.\n장바구니로 이동할까요?");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});
                 }
             //장바구니 위치에 메뉴,버튼
@@ -69,11 +81,10 @@ function reply_click(clicked_id){
             newDiv = document.createElement("div4");     
             newDiv.innerHTML = for_temp+" "+clicked_id
                         +"<form name='form'>"
-                        +"<input type='hidden' name='sell_price' value='0'>"
                         +"<input type='button' value=' - ' onclick='del();'>"
-                        +"<input type='text' class='' value='1' size='1' onchange='change();'>"
+                        +"<input type='text' class='ea_count' value='1' size='1' onchange='change();'>"
                         +"<input type='button' value=' + ' onclick='add();'>"
-                        +"<input type='text' name='sum' style='border: 0px none;' size='3'>"
+                        +"<input type='text' name='sum'value= style='border: 0px none;' size='3'>"
                         +"</form>"   
             newDiv.setAttribute("class", "myDiv"+clicked_id);   //고유값 = innerText
             newDiv.style.backgroundColor = "rgba";      
@@ -83,13 +94,13 @@ function reply_click(clicked_id){
 
         //70~108 : 주요기능 : 실행, 장바구니 중복방지
         if(for_ade_temp==1){//에이드
-            let 변수=0;
+            let amout=0;
             let default_price = 3000;
             order(for_temp[1]);
             let 고유값= newDiv.innerText; 
-            if(set_arr.has(고유값)){ // 값이 
-                total_cnt.push(고유값); //total_cnt 는 총 수량과 총 결제금액에 쓸것임
+            if(set_arr.has(고유값)){ 
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
+                //class ea_count.value 를 +1 추가 시킨다.
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
                 newDiv.remove();
@@ -107,20 +118,17 @@ function reply_click(clicked_id){
                 }  
             }
             for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                if(ea_price[i]){    //처음 실행시 i=0 이므로 if(ea_price[0])일때 아래 코드 실행
-                    변수=i; //sum의 i(=0)번째 방의 value 값에 지금까지 연산한 금액을 담는다.                    
-                }
+                amout=i;
             }
-            ea_price[변수].value = default_price
+            ea_price[amout].value = default_price
 
 
-        }else if(add_temp==0){ //뜨거운
+        }else if(add_temp==0){ //따뜻한
             let default_price = 3000;
             order(for_temp[add_temp]);  
             let 고유값= newDiv.innerText ;
             if(고유값)
             if(set_arr.has(고유값)){
-                total_cnt.push(고유값); //total_cnt 는 총 수량과 총 결제금액에 쓸것임
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
@@ -128,7 +136,6 @@ function reply_click(clicked_id){
             }
             set_arr.add(고유값);  
             for_ade_temp=0;
-            hot_price();
             for (let i = 0; i < menu_arr.length; i++){//따뜻한 M
                 if (i>=11&&고유값==menu_arr[i]){  
                     default_price=3000;
@@ -149,16 +156,16 @@ function reply_click(clicked_id){
                         } 
                     }
             }
-            console.log(default_price);
-            console.log(typeof(default_price));
+            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
+                amout=i;
+            }
+            ea_price[amout].value = default_price
 
         }else if(add_temp==1){
             let default_price = 3000; // 아이스
             order(for_temp[add_temp]);
             let 고유값= newDiv.innerText ;
             if(set_arr.has(고유값)){
-                total_cnt.push(고유값); //total_cnt 는 총 수량과 총 결제금액에 쓸것임
-                ea_item.push(고유값);  //ea_item 은 개당 수량을 파악할때 쓸거임.
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
@@ -186,10 +193,11 @@ function reply_click(clicked_id){
                     }
                 }
             }
-            console.log(default_price);
-            console.log(typeof(default_price));
-            ea_price
-              // form안에 sun 네임의 value안에 지금까지 구한 가격이 담긴다.
+            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
+                amout=i;
+            }
+            ea_price[amout].value = default_price
+            
         }
 }
 
@@ -259,8 +267,8 @@ function ice_price(){
 // let amount;
 // init();
 //     function init () {
-//         가격 = document.form.sell_price.value; //form 안에있는 sell_price의 value 값을 sell_price변수에 담음 ->가격
-//         amount = document.form.amount.value; //form 안에있는 amout 의 value 값을 amout 라는 이름의 변수에 담음 ->수량 조절
+//         가격 = document.form.sell_price.value; //form 안에있는 sell_price의 value 값을 sell_priceamout에 담음 ->가격
+//         amount = document.form.amount.value; //form 안에있는 amout 의 value 값을 amout 라는 이름의 amout에 담음 ->수량 조절
 //         document.form.sum.value = sell_price; // 읽기전용인 sum 의 value 값을 위에서 선언한 sell_price로 한다.
 //         change(); //change 함수 실행
 //     }

@@ -29,8 +29,7 @@ h1 {
     margin: 20px;
     margin-top: 5px;
 }
-
-#menu-name{
+.menu_name{
     display: inline;
     bottom: 85px;
     position: relative;
@@ -56,6 +55,7 @@ h1 {
     height: 100px;
 }
 
+
 body {
     width:  100%;
     margin-left: 10% ;
@@ -80,4 +80,12 @@ body {
 .count{
     width: 35px;
     position: relative;
+}
+
+.hidden_img{
+    display: none;
+}
+.hidden_img_size{
+    width: 5%;
+    height: 5%;
 }

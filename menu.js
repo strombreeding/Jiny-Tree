@@ -13,11 +13,10 @@ const iceadd_name =document.getElementsByClassName("menu_name");
 const hot_name = document.getElementsByClassName("hidden_name");  
 //
 let obj;
-let newDiv;
 let amount;
 let default_price=3000;
-let sex;
-
+let 고유값;
+let newDiv;
 //       클릭시 메뉴 가격,이름 변경
 function addice(){
     const hidden_img = document.getElementsByName("hidden_img");
@@ -78,14 +77,14 @@ function reply_click(clicked_id){
             //장바구니 위치에 메뉴,버튼
             obj = document.getElementById("optionControl");
             newDiv = document.createElement("div4"); 
-            newDiv.value = for_temp+" "+clicked_id;    
-            newDiv.innerHTML = for_temp+" "+clicked_id
+            고유값 = for_temp+" "+clicked_id;    
+            newDiv.innerHTML = 고유값
                         +"<form name='form'>"
                         +"<input type='button' value=' - ' onclick='del();'>"
                         +"<input type='text' class='ea_count' value='1' size='1'>"
                         +"<input type='button' value=' + ' onclick='add();'>"
                         +"<input type='text' name='sum' style='border: none;' size='30%' readonly>"
-                        +"</form>"   
+                        +"</form>"  
             newDiv.setAttribute("class", "myDiv"+clicked_id);   //inherent_value = innerText
             newDiv.style.backgroundColor = "rgba";      
             obj.appendChild(newDiv);
@@ -96,7 +95,6 @@ function reply_click(clicked_id){
         if(for_ade_temp==1){//에이드
             order(for_temp[1]);
             let amout=0;
-            let 고유값= newDiv.innerText; 
             for (let i = 0; i < menu_arr.length; i++){
                 if (고유값==menu_arr[i]){ 
                 }default_price += 0;
@@ -129,7 +127,6 @@ function reply_click(clicked_id){
         }else if(add_temp==0){ //따뜻한
             order(for_temp[add_temp]);  
             let amout=0;
-            let 고유값= newDiv.innerText ;
             for (let i = 0; i < menu_arr.length; i++){//따뜻한 M
                 if (고유값==menu_arr[i]){  
                     for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
@@ -169,7 +166,6 @@ function reply_click(clicked_id){
         }else if(add_temp==1){
             order(for_temp[add_temp]);
             let amout=0;
-            let 고유값= newDiv.innerText ;
             for (let i = 0; i < menu_arr.length; i++){
                 if (고유값==menu_arr[i]){  
                     default_price+=500;
@@ -182,7 +178,7 @@ function reply_click(clicked_id){
             }
             for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
                 if (고유값==menu_Lsize_arr[r]){  
-                    default_price+=1000;
+                    default_price+=1500; // 아이스기본 500+라지1000 
                     for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
                         if(premium_menu_arr[x]==고유값){ //비싼메뉴가 선택됐을때
                             default_price+=500; //500을더한다.

@@ -1,20 +1,17 @@
 
-//
+ //선언
 let set_arr = new Set([]);
-let total_cnt = []; //총 수량으로 
-let add_temp=0; //addice(),addhot(),reply_click()에서 주로 사용됨
-let for_temp=["따뜻한","아이스"]; //order()에 사용됨
-let for_ade_temp= 0; //order()에 사용됨
-//rkruirt
+let total_cnt = []; //총 수량으로 ;
+let for_temp=["따뜻한","아이스"]; //order()에 사용됨;
 const menu_Lsize_arr = ["아이스 아메리카노L","아이스 콜드브루L","아이스 카페라떼L","아이스 카라멜마끼야또L","아이스 캐모마일L","아이스 블랙퍼스트L","아이스 유자차L","아이스 자몽차L","아이스 레몬에이드L","아이스 라임에이드L","아이스 자몽에이드L","따뜻한 아메리카노L","따뜻한 콜드브루L","따뜻한 카페라떼L","따뜻한 카라멜마끼야또L","따뜻한 캐모마일L","따뜻한 블랙퍼스트L","따뜻한 유자차L","따뜻한 자몽차L"];
 const premium_menu_arr = ["아이스 카페라떼M","아이스 카페라떼L","아이스 카라멜마끼야또M","아이스 카라멜마끼야또L", "따뜻한 카페라떼M","따뜻한 카페라떼L", "따뜻한 카라멜마끼야또M","따뜻한 카라멜마끼야또L"];
-const menu_arr = ["아이스 아메리카노M","아이스 콜드브루M","아이스 카페라떼M","아이스 카라멜마끼야또M","아이스 캐모마일M","아이스 블랙퍼스트M","아이스 유자차M","아이스 자몽차M","아이스 레몬에이드M","아이스 라임에이드M","아이스 자몽에이드M","따뜻한 아메리카노M","따뜻한 콜드브루M","따뜻한 카페라떼M","따뜻한 카라멜마끼야또M","따뜻한 캐모마일M","따뜻한 블랙퍼스트M","따뜻한 유자차M","따뜻한 자몽차M",];
+const menu_arr =       ["아이스 아메리카노M","아이스 콜드브루M","아이스 카페라떼M","아이스 카라멜마끼야또M","아이스 캐모마일M","아이스 블랙퍼스트M","아이스 유자차M","아이스 자몽차M","아이스 레몬에이드M","아이스 라임에이드M","아이스 자몽에이드M","따뜻한 아메리카노M","따뜻한 콜드브루M","따뜻한 카페라떼M","따뜻한 카라멜마끼야또M","따뜻한 캐모마일M","따뜻한 블랙퍼스트M","따뜻한 유자차M","따뜻한 자몽차M"];
 let ea_price = document.getElementsByName("sum");
-// ea_price1.push(ea_price)
-// let ea_price1=[];
-const iceadd_name =document.getElementsByClassName("menu_name"); //== '메뉴이름'.innerText    11개가있다.
-const hot_name = document.getElementsByClassName("hidden_name");  // == 
-
+let add_temp=0; //addice(),addhot(),reply_click()에서 주로 사용됨
+let for_ade_temp= 0; //order()에 사용됨
+const iceadd_name =document.getElementsByClassName("menu_name"); 
+const hot_name = document.getElementsByClassName("hidden_name");  
+//
 
 
 
@@ -35,7 +32,6 @@ function addice(){
         iceadd2[i].innerHTML = "price M=4,000원 L=5,000원";
     }
     add_temp=1;
-
 }    
 function addhot(){
     let hotadd = document.getElementsByClassName("menu_price");
@@ -82,9 +78,10 @@ function reply_click(clicked_id){
             newDiv.innerHTML = for_temp+" "+clicked_id
                         +"<form name='form'>"
                         +"<input type='button' value=' - ' onclick='del();'>"
-                        +"<input type='text' class='ea_count' value='1' size='1' onchange='change();'>"
+                        +"<input type='text' class='ea_count' value='1' size='1'>"
                         +"<input type='button' value=' + ' onclick='add();'>"
-                        +"<input type='text' name='sum'value= style='border: 0px none;' size='3'>"
+                        +"<input type='text' name='sum' style='border: none;' size='3' readonly>"
+                        +"<img src='https://github.com/strombreeding/Jiny-Tree/blob/main/img/dd.png?raw=true' size='70%;'>"
                         +"</form>"   
             newDiv.setAttribute("class", "myDiv"+clicked_id);   //고유값 = innerText
             newDiv.style.backgroundColor = "rgba";      
@@ -94,58 +91,53 @@ function reply_click(clicked_id){
 
         //70~108 : 주요기능 : 실행, 장바구니 중복방지
         if(for_ade_temp==1){//에이드
+            order(for_temp[1]);
             let amout=0;
             let default_price = 3000;
-            order(for_temp[1]);
             let 고유값= newDiv.innerText; 
-            if(set_arr.has(고유값)){ 
-                alert(고유값+"은(는) 이미 추가하셨습니다.");
-                //class ea_count.value 를 +1 추가 시킨다.
-                const opControl = document.getElementById("optionControl");
-                if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
-                newDiv.remove();
-            }  
-            // ea_price.push(document.getElementsByName("sum"));
-            set_arr.add(고유값);  
-            for_ade_temp=0;
             for (let i = 0; i < menu_arr.length; i++){
                 if (i>=7&&i<=10&&고유값==menu_arr[i]){ 
-                }
-            }
+                }default_price = 3000;
+            }  
             for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
                 if (r>=7&&r<=10&&고유값==menu_Lsize_arr[r]){  
                     default_price+=1000;
-                }  
+                }  //4000
             }
             for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amout=i;
+                amout=i
+                if(total_cnt.indexOf(고유값)==i){
+                    amout=i;}
             }
-            ea_price[amout].value = default_price
+            console.log(default_price);
+            ea_price[amout].value = default_price;
+            if(total_cnt.includes(고유값)){ 
+                alert(고유값+"은(는) 이미 추가하셨습니다.")
+                const opControl = document.getElementById("optionControl");
+            if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
+            newDiv.remove();
+            }  
+            total_cnt.push(고유값); 
+            set_arr.add(고유값);  
+            for_ade_temp=0;
+
+
 
 
         }else if(add_temp==0){ //따뜻한
-            let default_price = 3000;
             order(for_temp[add_temp]);  
+            let amout=0;
+            let default_price = 3000;
             let 고유값= newDiv.innerText ;
-            if(고유값)
-            if(set_arr.has(고유값)){
-                alert(고유값+"은(는) 이미 추가하셨습니다.");
-                const opControl = document.getElementById("optionControl");
-                if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
-                newDiv.remove();
-            }
-            set_arr.add(고유값);  
-            for_ade_temp=0;
             for (let i = 0; i < menu_arr.length; i++){//따뜻한 M
                 if (i>=11&&고유값==menu_arr[i]){  
-                    default_price=3000;
                     for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
                         if(premium_menu_arr[x]==고유값){ //비싼메뉴가 선택됐을때
                             default_price+=500; //500을더한다.
                         }
                     } 
                 }
-            }console.log(default_price);
+            }
             for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
                     if (r>=11&&고유값==menu_Lsize_arr[r]){  
                         default_price+=1000;
@@ -157,22 +149,27 @@ function reply_click(clicked_id){
                     }
             }
             for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amout=i;
+                amout=i
+                if(total_cnt.indexOf(고유값)==i){
+                    amout=i;}
             }
-            ea_price[amout].value = default_price
-
-        }else if(add_temp==1){
-            let default_price = 3000; // 아이스
-            order(for_temp[add_temp]);
-            let 고유값= newDiv.innerText ;
+            ea_price[amout].value = default_price;
             if(set_arr.has(고유값)){
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
                 newDiv.remove();
-                }
-            set_arr.add(고유값);  
+                default_price = 3000;
+            }
+            total_cnt.push(고유값); 
+            set_arr.add(고유값)  
             for_ade_temp=0;
+
+        }else if(add_temp==1){
+            order(for_temp[add_temp]);
+            let amout=0;
+            let default_price = 3000;
+            let 고유값= newDiv.innerText ;
             for (let i = 0; i < menu_arr.length; i++){
                 if (i<8&&고유값==menu_arr[i]){  
                     default_price+=500;
@@ -194,10 +191,26 @@ function reply_click(clicked_id){
                 }
             }
             for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amout=i;
+                amout=i
+                if(total_cnt.indexOf(고유값)==i){
+                amout=i;}
+                
             }
-            ea_price[amout].value = default_price
-            
+            ea_price[amout].value = default_price;
+            if(set_arr.has(고유값)){
+                alert(고유값+"은(는) 이미 추가하셨습니다.");
+                const opControl = document.getElementById("optionControl");
+                if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
+                newDiv.remove();
+            }
+            total_cnt.push(고유값); 
+            set_arr.add(고유값);  
+            for_ade_temp=0;
+  
+        //
+        //indexof 로 total_count배열 안에 '고유값'을 검색하여 나온 [번호]는 
+        //가장 처음에 나온것이므로 그 [번호]가 있다면 
+        //그 [번호]에 해당하는 곳으로 계산 값을 넣어주어야 한다. 
         }
 }
 

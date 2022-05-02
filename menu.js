@@ -2,6 +2,7 @@
  //선언
 let set_arr = new Set([]);
 let total_cnt = []; //총 수량으로 ;
+let ea_ct = {};
 let for_temp=["따뜻한","아이스"]; //order()에 사용됨;
 const menu_Lsize_arr = ["아이스 아메리카노L","아이스 콜드브루L","아이스 카페라떼L","아이스 카라멜마끼야또L","아이스 캐모마일L","아이스 블랙퍼스트L","아이스 유자차L","아이스 자몽차L","아이스 레몬에이드L","아이스 라임에이드L","아이스 자몽에이드L","따뜻한 아메리카노L","따뜻한 콜드브루L","따뜻한 카페라떼L","따뜻한 카라멜마끼야또L","따뜻한 캐모마일L","따뜻한 블랙퍼스트L","따뜻한 유자차L","따뜻한 자몽차L"];
 const premium_menu_arr = ["아이스 카페라떼M","아이스 카페라떼L","아이스 카라멜마끼야또M","아이스 카라멜마끼야또L", "따뜻한 카페라떼M","따뜻한 카페라떼L", "따뜻한 카라멜마끼야또M","따뜻한 카라멜마끼야또L"];
@@ -11,12 +12,14 @@ let add_temp=0; //addice(),addhot(),reply_click()에서 주로 사용됨
 let for_ade_temp= 0; //order()에 사용됨
 const iceadd_name =document.getElementsByClassName("menu_name"); 
 const hot_name = document.getElementsByClassName("hidden_name");  
-//
+let ea_count = 0;
 let obj;
 let amount;
 let default_price=0;
 let 고유값;
 let newDiv;
+let quan = document.getElementsByClassName('quan');
+let myDiv = document.getElementsByClassName("myDiv");
 //       클릭시 메뉴 가격,이름 변경
 function addice(){
     const hidden_img = document.getElementsByName("hidden_img");
@@ -80,17 +83,33 @@ function reply_click(clicked_id){
             고유값 = for_temp+" "+clicked_id;    
             newDiv.innerHTML = 고유값
                         +"<form name='form'>"
-                        +"<input type='button' value=' - ' onclick='del();'>"
-                        +"<input type='text' class='ea_count' value='1' size='1'>"
-                        +"<input type='button' value=' + ' onclick='add();'>"
+                        +"<input type='button' value='-' onclick='del();'>"
+                        +"<input type='text' class='quan' value='1' size='1'>"
+                        +"<input type='button' value='+' onclick='add();'>"
                         +"<input type='text' name='sum' style='border: none;' size='30%' readonly>"
                         +"</form>"  
-            newDiv.setAttribute("class", "myDiv"+clicked_id);   //inherent_value = innerText
+            newDiv.setAttribute("class", "myDiv");   //inherent_value = innerText
             newDiv.style.backgroundColor = "rgba";      
             obj.appendChild(newDiv);
     }
     function setthing(){
+        function 연산(){
+            for (let i = 0; i < total_cnt.length; i++) {
+                if(total_cnt[i]==고유값){
+                    ea_count += 1;
+                }
+                ea_ct[고유값]= ea_count;
+            }
+            ea_count=0;
+            for (let i = 0; i < quan.length; i++) {
+                if(고유값==myDiv[i].innerText){
+                    quan[i].value= Object.values(ea_ct)[i];
+                    ea_price[i].value= default_price*quan[i].value;
+                }
+            }
+        }
         let amount=0;
+        //클릭 메뉴의 가격을 구하는 것.
         default_price=3000;
         //에이드 선택
         if(for_ade_temp==1){
@@ -103,23 +122,50 @@ function reply_click(clicked_id){
                 if (고유값==menu_Lsize_arr[r]){  
                     default_price+=1000;
                 }  
-            }
-            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amount=i
-                if(total_cnt.indexOf(고유값)==i){
-                    amount=i;}
-            }
-            ea_price[amount].value = default_price;
-            if(total_cnt.includes(고유값)){ 
+            } //여기까지 가격을 구하는 코드
+            //아래는 장바구니 중복 방지 코드 div를 삭제하는 것.
+            if(total_cnt.indexOf(고유값)!=-1){ 
                 alert(고유값+"은(는) 이미 추가하셨습니다.")
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
                 newDiv.remove();
-            }  
-            total_cnt.push(고유값); 
-            set_arr.add(고유값);  
+            }
             for_ade_temp=0;
-        //따뜻한 선택
+            //total_cnt 에 누르는 메뉴이름이 배열로 계속 담기게 됨.  
+            total_cnt.push(고유값); 
+            //아래 set 는 굳이 안써도 되긴함.
+            // set_arr.add(고유값); 
+            
+            //모든 클릭횟수만큼반복
+            //모든클릭회수중에 배열i가 현재 클릭한메뉴와 같을때 ea_count변수에 1을 더함
+            for (let i = 0; i < total_cnt.length; i++) {
+                if(total_cnt[i]==고유값){
+                    ea_count += 1;
+                }
+                // {키'선택한메뉴': 메뉴가 클릭된 수'ea_count'}
+                // 객체의 value 를 뽑아내야한다. 
+                ea_ct[고유값]= ea_count;
+            }
+            //ea_coun 가 중첩되지않게 for문 끝나자마자 초기화
+            ea_count=0;
+            
+            //아래 .length의 배열은 클릭하면서 생겨난 div의 개수와 같다면 아무 배열이나 상관 없다.
+            //quan 대신 ea_price.length 로 해도 되고, set에 고유값을 넣어 중복을 방지한 후에 set_arr.length로 해도 된다.
+            for (let i = 0; i < quan.length; i++) {
+                //myDiv = 클릭하면서 생겨난 메뉴이름을 innerTExt로 가진 div
+                //클릭한 이름이 mydiv와 같다면
+                if(고유값==myDiv[i].innerText){
+                    //i번째 수량의 값에다가 = ea_ct객체의 [i]번째 키의 value를 담는것
+                    //각 메뉴마다 클릭할때마다 total_cnt 배열에 고유값이 쌓이고 이것은 고유값 : 1+2+~~ 이런식으로 저장된다.
+                    quan[i].value= Object.values(ea_ct)[i];
+                    //i번째 금액 값에다가 위에서 계산한 클릭한메뉴의 값과 i번째 수량과 곱한 값을 담는다
+                    ea_price[i].value= default_price*quan[i].value;//금액은 위에서 계산한거 * 수량이다. 
+                    //버그였는데 if문으로 해결했다.(근데 포문에서 계속 돌리니깐 클릭하는 메뉴의 가격으로 전부 연산이되어버림).
+                }
+            }
+            //함수가 실행될때마다 default_price의 값은 초기화되므로 아래 코드는 필요없음.
+            // default_price=0;
+
         }else if(add_temp==0){
             //따뜻한 M 사이즈 선택
             for (let i = 0; i < menu_arr.length; i++){
@@ -136,21 +182,17 @@ function reply_click(clicked_id){
                     default_price+=1000;
                     }    
             }
-            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amount=i
-                if(total_cnt.indexOf(고유값)==i){
-                    amount=i;}
-            }
-            ea_price[amount].value = default_price;
-            if(set_arr.has(고유값)){
+            if(total_cnt.indexOf(고유값)!=-1){
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
                 newDiv.remove();
             }
-            total_cnt.push(고유값); 
-            set_arr.add(고유값);  
             for_ade_temp=0;
+            total_cnt.push(고유값); 
+            // set_arr.add(고유값);  
+            연산();
+
         //아이스 선택
         }else if(add_temp==1){ 
             for (let i = 0; i < menu_arr.length; i++){
@@ -170,19 +212,18 @@ function reply_click(clicked_id){
                     default_price+=1500; //아이스는 L사이즈 배열에 들어있지 않기 때문에 아이스500추가금까지 받아야함.
                 } 
             }
-            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amount=i         
-            }
             ea_price[amount].value = default_price;
-            if(set_arr.has(고유값)){
+            if(total_cnt.indexOf(고유값)!=-1){
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
                 if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
                 newDiv.remove();
             }
-            total_cnt.push(고유값); 
-            set_arr.add(고유값);  
             for_ade_temp=0;
+            total_cnt.push(고유값); 
+            //set_arr.add(고유값);  
+            연산();
+            
         }
     }
 
@@ -190,6 +231,7 @@ function reply_click(clicked_id){
     if(for_ade_temp==1){//에이드
         order(for_temp[1]);
         setthing();
+        
     }else if(add_temp==0){ //따뜻한
         order(for_temp[add_temp]);  
         setthing();

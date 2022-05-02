@@ -14,7 +14,7 @@ const hot_name = document.getElementsByClassName("hidden_name");
 //
 let obj;
 let amount;
-let default_price=3000;
+let default_price=0;
 let 고유값;
 let newDiv;
 //       클릭시 메뉴 가격,이름 변경
@@ -89,27 +89,27 @@ function reply_click(clicked_id){
             newDiv.style.backgroundColor = "rgba";      
             obj.appendChild(newDiv);
     }
-        
-
-        //70~108 : 주요기능 : 실행, 장바구니 중복방지
-        if(for_ade_temp==1){//에이드
-            order(for_temp[1]);
-            let amout=0;
+    function setthing(){
+        let amount=0;
+        default_price=3000;
+        //에이드 선택
+        if(for_ade_temp==1){
             for (let i = 0; i < menu_arr.length; i++){
                 if (고유값==menu_arr[i]){ 
                 }default_price += 0;
             }  
-            for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
+            //L사이즈 선택
+            for (let r = 0; r < menu_Lsize_arr.length; r++) {
                 if (고유값==menu_Lsize_arr[r]){  
                     default_price+=1000;
-                }  //4000
+                }  
             }
             for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amout=i
+                amount=i
                 if(total_cnt.indexOf(고유값)==i){
-                    amout=i;}
+                    amount=i;}
             }
-            ea_price[amout].value = default_price;
+            ea_price[amount].value = default_price;
             if(total_cnt.includes(고유값)){ 
                 alert(고유값+"은(는) 이미 추가하셨습니다.")
                 const opControl = document.getElementById("optionControl");
@@ -119,77 +119,29 @@ function reply_click(clicked_id){
             total_cnt.push(고유값); 
             set_arr.add(고유값);  
             for_ade_temp=0;
-            default_price = 3000;
-
-
-
-
-        }else if(add_temp==0){ //따뜻한
-            order(for_temp[add_temp]);  
-            let amout=0;
-            for (let i = 0; i < menu_arr.length; i++){//따뜻한 M
-                if (고유값==menu_arr[i]){  
-                    for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                        if(premium_menu_arr[x]==고유값){ //비싼메뉴가 선택됐을때
-                            default_price+=500; //500을더한다.
-                        }
-                    } 
-                }
-            }
-            for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
-                    if (고유값==menu_Lsize_arr[r]){  
-                        default_price+=1000;
-                        for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                            if(premium_menu_arr[x]==고유값){ //비싼메뉴가 선택됐을때
-                                default_price+=500; //500을더한다.
-                            }
-                        } 
-                    }
-            }
-            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amout=i
-                if(total_cnt.indexOf(고유값)==i){
-                    amout=i;}
-            }
-            ea_price[amout].value = default_price;
-            if(set_arr.has(고유값)){
-                alert(고유값+"은(는) 이미 추가하셨습니다.");
-                const opControl = document.getElementById("optionControl");
-                if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
-                newDiv.remove();
-            }
-            total_cnt.push(고유값); 
-            set_arr.add(고유값)  
-            for_ade_temp=0;
-            default_price = 3000;
-
-        }else if(add_temp==1){
-            order(for_temp[add_temp]);
-            let amout=0;
+        //따뜻한 선택
+        }else if(add_temp==0){
+            //따뜻한 M 사이즈 선택
             for (let i = 0; i < menu_arr.length; i++){
-                if (고유값==menu_arr[i]){  
-                    default_price+=500;
-                    for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                        if(premium_menu_arr[x]==고유값){ //비싼메뉴가 선택됐을때
-                            default_price+=500; //500을더한다.
+                if (고유값==menu_arr[i]){} }
+            //비싼메뉴 선택
+            for (let x = 0; x < premium_menu_arr.length; x++) {
+                        if(premium_menu_arr[x]==고유값){ 
+                            default_price+=500;
                         }
-                    }
-                } 
             }
-            for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
+            // L사이즈 선택
+            for (let r = 0; r < menu_Lsize_arr.length; r++) {
                 if (고유값==menu_Lsize_arr[r]){  
-                    default_price+=1500; // 아이스기본 500+라지1000 
-                    for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                        if(premium_menu_arr[x]==고유값){ //비싼메뉴가 선택됐을때
-                            default_price+=500; //500을더한다.
-                        }
-                    }
-                }
+                    default_price+=1000;
+                    }    
             }
             for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
-                amout=i         
+                amount=i
+                if(total_cnt.indexOf(고유값)==i){
+                    amount=i;}
             }
-            ea_price[amout].value = default_price;
+            ea_price[amount].value = default_price;
             if(set_arr.has(고유값)){
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
@@ -199,14 +151,55 @@ function reply_click(clicked_id){
             total_cnt.push(고유값); 
             set_arr.add(고유값);  
             for_ade_temp=0;
-            default_price = 3000;
-  
-        //
-        //indexof 로 total_count배열 안에 '고유값'을 검색하여 나온 [번호]는 
-        //가장 처음에 나온것이므로 그 [번호]가 있다면 
-        //그 [번호]에 해당하는 곳으로 계산 값을 넣어주어야 한다. 
+        //아이스 선택
+        }else if(add_temp==1){ 
+            for (let i = 0; i < menu_arr.length; i++){
+                if (고유값==menu_arr[i]){  
+                    default_price+=500;
+                }
+            }
+            //비싼메뉴 선택
+            for (let x = 0; x < premium_menu_arr.length; x++) {
+                if(premium_menu_arr[x]==고유값){ 
+                    default_price+=500; 
+                }
+            }
+            //아이스 L 사이즈 선택
+            for (let r = 0; r < menu_Lsize_arr.length; r++) {
+                if (고유값==menu_Lsize_arr[r]){  
+                    default_price+=1500; //아이스는 L사이즈 배열에 들어있지 않기 때문에 아이스500추가금까지 받아야함.
+                } 
+            }
+            for (let i = 0; i < ea_price.length; i++) { // 클릭마다 ea_price의 length가 늘어난다.
+                amount=i         
+            }
+            ea_price[amount].value = default_price;
+            if(set_arr.has(고유값)){
+                alert(고유값+"은(는) 이미 추가하셨습니다.");
+                const opControl = document.getElementById("optionControl");
+                if(scroll){opControl.scrollIntoView({behavior: "smooth", block: "center"});}
+                newDiv.remove();
+            }
+            total_cnt.push(고유값); 
+            set_arr.add(고유값);  
+            for_ade_temp=0;
         }
+    }
+
+        //70~108 : 주요기능 : 실행, 장바구니 중복방지
+    if(for_ade_temp==1){//에이드
+        order(for_temp[1]);
+        setthing();
+    }else if(add_temp==0){ //따뜻한
+        order(for_temp[add_temp]);  
+        setthing();
+    }else if(add_temp==1){
+        order(for_temp[add_temp]);
+        setthing();
+    }
 }
+
+
 /* 쓸지도 모르는 계산 로직
 function hot_price(){
     for (let i = 0; i < menu_arr.length; i++){//따뜻한 M

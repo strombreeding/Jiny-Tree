@@ -24,11 +24,7 @@ h1 {
     background-color: rgba(104, 100, 95, 0.527);
     color: rgb(33, 24, 151);
 }
-#add_Menu{
-    background-color: rgba(144, 238, 144, 0.575);
-    margin: 20px;
-    margin-top: 5px;
-}
+
 .menu_name{
     display: inline;
     bottom: 85px;

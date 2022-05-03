@@ -14,8 +14,7 @@ const iceadd_name =document.getElementsByClassName("menu_name");
 const hot_name = document.getElementsByClassName("hidden_name");  
 let ea_count = 0;
 let obj;
-let amount;
-let default_price=0;
+let default_price=3000;
 let 고유값;
 let newDiv;
 let quan = document.getElementsByClassName('quan');
@@ -88,7 +87,7 @@ function reply_click(clicked_id){
                         +"<input type='button' value='+' onclick='add();'>"
                         +"<input type='text' name='sum' style='border: none;' size='30%' readonly>"
                         +"</form>"  
-            newDiv.setAttribute("class", "myDiv");   //inherent_value = innerText
+            newDiv.setAttribute("class", "myDiv");   //inherent_value = textContent
             newDiv.style.backgroundColor = "rgba";      
             obj.appendChild(newDiv);
     }
@@ -102,13 +101,14 @@ function reply_click(clicked_id){
             }
             ea_count=0;
             for (let i = 0; i < quan.length; i++) {
-                if(고유값==myDiv[i].innerText){
+                if(고유값==myDiv[i].textContent){
                     quan[i].value= Object.values(ea_ct)[i];
                     ea_price[i].value= default_price*quan[i].value;
                 }
             }
+
+        
         }
-        let amount=0;
         //클릭 메뉴의 가격을 구하는 것.
         default_price=3000;
         //에이드 선택
@@ -134,7 +134,7 @@ function reply_click(clicked_id){
             //total_cnt 에 누르는 메뉴이름이 배열로 계속 담기게 됨.  
             total_cnt.push(고유값); 
             //아래 set 는 굳이 안써도 되긴함.
-            // set_arr.add(고유값); 
+            set_arr.add(고유값); 
             
             //모든 클릭횟수만큼반복
             //모든클릭회수중에 배열i가 현재 클릭한메뉴와 같을때 ea_count변수에 1을 더함
@@ -152,9 +152,9 @@ function reply_click(clicked_id){
             //아래 .length의 배열은 클릭하면서 생겨난 div의 개수와 같다면 아무 배열이나 상관 없다.
             //quan 대신 ea_price.length 로 해도 되고, set에 고유값을 넣어 중복을 방지한 후에 set_arr.length로 해도 된다.
             for (let i = 0; i < quan.length; i++) {
-                //myDiv = 클릭하면서 생겨난 메뉴이름을 innerTExt로 가진 div
+                //myDiv = 클릭하면서 생겨난 메뉴이름을 textContent로 가진 div
                 //클릭한 이름이 mydiv와 같다면
-                if(고유값==myDiv[i].innerText){
+                if(고유값==myDiv[i].textContent){
                     //i번째 수량의 값에다가 = ea_ct객체의 [i]번째 키의 value를 담는것
                     //각 메뉴마다 클릭할때마다 total_cnt 배열에 고유값이 쌓이고 이것은 고유값 : 1+2+~~ 이런식으로 저장된다.
                     quan[i].value= Object.values(ea_ct)[i];
@@ -169,18 +169,25 @@ function reply_click(clicked_id){
         }else if(add_temp==0){
             //따뜻한 M 사이즈 선택
             for (let i = 0; i < menu_arr.length; i++){
-                if (고유값==menu_arr[i]){} }
+                if (고유값==menu_arr[i]){
+                    default_price=3000;
+                    break;
+                } }
             //비싼메뉴 선택
             for (let x = 0; x < premium_menu_arr.length; x++) {
-                        if(premium_menu_arr[x]==고유값){ 
-                            default_price+=500;
-                        }
+                if(premium_menu_arr[x]==고유값){ 
+                    default_price+=500;
+                    break;
+                }
+
             }
             // L사이즈 선택
             for (let r = 0; r < menu_Lsize_arr.length; r++) {
                 if (고유값==menu_Lsize_arr[r]){  
                     default_price+=1000;
+                    break;
                     }    
+
             }
             if(total_cnt.indexOf(고유값)!=-1){
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
@@ -190,7 +197,7 @@ function reply_click(clicked_id){
             }
             for_ade_temp=0;
             total_cnt.push(고유값); 
-            // set_arr.add(고유값);  
+            set_arr.add(고유값);  
             연산();
 
         //아이스 선택
@@ -212,7 +219,9 @@ function reply_click(clicked_id){
                     default_price+=1500; //아이스는 L사이즈 배열에 들어있지 않기 때문에 아이스500추가금까지 받아야함.
                 } 
             }
-            ea_price[amount].value = default_price;
+
+
+            
             if(total_cnt.indexOf(고유값)!=-1){
                 alert(고유값+"은(는) 이미 추가하셨습니다.");
                 const opControl = document.getElementById("optionControl");
@@ -221,7 +230,7 @@ function reply_click(clicked_id){
             }
             for_ade_temp=0;
             total_cnt.push(고유값); 
-            //set_arr.add(고유값);  
+            set_arr.add(고유값);  
             연산();
             
         }
@@ -239,8 +248,18 @@ function reply_click(clicked_id){
         order(for_temp[add_temp]);
         setthing();
     }
+    
+    final_price();
 }
-
+ // 최종 
+ let finalPrice = 0;
+function final_price(){
+    finalPrice = 0;
+    for (let i = 0; i < ea_price.length; i++) {
+        finalPrice += parseInt(ea_price[i].value);
+    }
+    document.getElementById("final_price").value = finalPrice;
+}
 
 /* 쓸지도 모르는 계산 로직
 function hot_price(){

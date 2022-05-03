@@ -20,17 +20,12 @@ h1 {
 .ctype{
     height: 35px;
 }
-#basket{
+.basket{
     background-color: rgba(104, 100, 95, 0.527);
     color: rgb(33, 24, 151);
 }
-.basket{
-    background-color: rgba(144, 238, 144, 0.575);
-    margin: 20px;
-    margin-top: 5px;
-}
 
-#menu-name{
+.menu_name{
     display: inline;
     bottom: 85px;
     position: relative;
@@ -55,13 +50,17 @@ h1 {
     width: 100px;
     height: 100px;
 }
+
+
 body {
+    width:  100%;
+    margin-left: 10% ;
     margin-top: 0px;
     background-color: rgba(36, 161, 113, 0.603);
 }
 
-button:hover{
-    color:brown
+.button:hover{
+    color:rgb(187, 30, 30)
 }
 
 #pay-button-좌표{
@@ -73,4 +72,16 @@ button:hover{
     color: white;
     background-color: rgba(0, 0, 0, 0.87);
     font-size: 25px;
+}
+.count{
+    width: 35px;
+    position: relative;
+}
+
+.hidden_img{
+    display: none;
+}
+.hidden_img_size{
+    width: 10%;
+    height: 10%;
 }

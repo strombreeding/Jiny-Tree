@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지니나무 장바구니 결제</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+  </head>
+  <script type="text/javascript">
+    let price = localStorage.getItem(`주문`);
+    IMP.init("imp99951373");
+
+    IMP.request_pay(
+      {
+        pg: "inicis", // version 1.1.0부터 지원.
+        pay_method: "card",
+        merchant_uid: "merchant_" + new Date().getTime(),
+        name: "지니나무",
+        amount: price, //판매 가격
+        buyer_name: "구매자이름",
+        buyer_tel: "010-1234-5678",
+        m_redirect_url: (src = "https://jineecafe.netlify.app/"),
+      },
+      function (rsp) {
+        if (rsp.success) {
+          var msg = "결제가 완료되었습니다.";
+          msg += "결제 금액 : " + rsp.paid_amount;
+          msg += "카드 승인번호 : " + rsp.apply_num;
+        } else {
+          var msg = "결제에 실패하였습니다.";
+          msg += "에러내용 : " + rsp.error_msg;
+        }
+        alert(msg);
+      }
+    );
+  </script>
+</html>

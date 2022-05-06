@@ -148,7 +148,7 @@ function reply_click(clicked_id) {
       "<input type='button' value='-' onclick='del();'>" +
       "<input type='text' max='10' class='quan' value='1' size='1'>" +
       "<input type='button' value='+' onclick='add();'>" +
-      "<input type='text' name='sum' style='border: none;' size='30%' readonly>" +
+      "<input type='text' name='sum' style='border: none;' size='6' readonly>" +
       "</form>";
     newDiv.setAttribute("class", "myDiv"); //inherent_value = textContent
     newDiv.style.backgroundColor = "rgba";
@@ -342,16 +342,37 @@ function final_price() {
   document.getElementById("final_price").value = finalPrice;
 }
 
-// 주문버튼 클릭시 발동
-// 결제 창으로 이동
-function pop_up() {
+// '주문하러가기!' 버튼 클릭시 실행
+function pay_go() {
+  let server = [];
+  for (let i = 0; i < quan.length; i++) {
+    const bill_num = {
+      menu: myDiv[i].textContent,
+      cnt: quan[i].value,
+    };
+    server.push(bill_num);
+  }
+  localStorage.setItem(Date.now(), JSON.stringify(server));
+  localStorage.setItem("영수증번호", Date.now());
+  // JSON.parse(localStorage.getItem(Date.now()));
   window.name = "menu";
-  window.open("order_confirm.html", "주문표 확인");
+  window.open("run_moduel.html", "주문표 확인"); // 결제모듈 실행
   localStorage.setItem(
     "주문",
     document.getElementById("final_price").value * 0.01
   );
 }
+// let arr = [];
+
+// for (let i = 0; i < quan.length; i++) {
+//   const akskksk = {
+//     menu: myDiv[i].textContent,
+//     cnt: quan[i].value,
+//   };
+//   arr.push(akskksk);
+// }
+// JSON.stringify(arr);
+// localStorage.setItem(Date.now(), arr);
 
 /* 쓸지도 모르는 계산 로직
 function hot_price(){

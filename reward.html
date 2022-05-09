@@ -13,8 +13,14 @@
     />
     <link rel="stylesheet" href="reward.css" />
   </head>
+  <script type="text/javascript">
+    // bill();
+  </script>
   <body>
     <header>
+      <div id="div1">
+        <button class="home_btn" onclick="location.href='home.html'">홈</button>
+      </div>
       <h1>결제내역 조회</h1>
     </header>
 
@@ -25,7 +31,7 @@
         <form id="결제내역">
           <input
             type="text"
-            class="form-control"
+            id="form-control"
             placeholder="영수증 번호"
             aria-label="영수증 번호"
             aria-describedby="button-addon2"

@@ -7,7 +7,7 @@ let help_Comparison = -1;
 function pay_seccess() {
   if (seccess > help_Comparison) {
     alert("결제가 성공적으로 완료되었어요!");
-    window.open("https://jineecafe.netlify.app/pay_seccess.html"); //결제 성공시 이동되는 페이지
+    window.open("https://jineecafe.netlify.app/pay_seccess.html");
   } else {
     alert("결제가 취소되었습니다!");
     close(); //뒤로가기를 쓸까 하다가 창이 새로 열렸기 때문에 창닫기를 선택

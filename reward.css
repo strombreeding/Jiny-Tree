@@ -12,3 +12,14 @@ header{
     background-color: rgb(15, 17, 15);
     
 }
+.home_btn{
+    text-align: left;
+    display: inline;
+}
+h1{
+    display: inline;
+}
+#div1{
+    display: inline;
+    text-align: left
+}

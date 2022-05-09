@@ -140,15 +140,17 @@ function reply_click(clicked_id) {
     }
     //메뉴 클릭시 생성되는 div
     obj = document.getElementById("optionControl");
-    newDiv = document.createElement("div4");
+    newDiv = document.createElement("li");
     고유값 = for_temp + " " + clicked_id;
     newDiv.innerHTML =
       고유값 +
       "<form name='form'>" +
-      "<input type='button' value='-' onclick='del();'>" +
-      "<input type='text' max='10' class='quan' value='1' size='1'>" +
-      "<input type='button' value='+' onclick='add();'>" +
-      "<input type='text' name='sum' style='border: none;' size='6' readonly>" +
+      "<input type='button' value='-' onclick='dec(this);'>" +
+      "<input type='text' max='10' class='quan' value='1' size='1'readonly >" +
+      "<input type='button' value='+' onclick='add(this);'>" +
+      "<input type='text' name='sum' style='border: none;' size='4' readonly>" +
+      "<input type='text' size='2' readonly  value='원'>" +
+      "<input type='button' value='X' onclick='del(this);'" +
       "</form>";
     newDiv.setAttribute("class", "myDiv"); //inherent_value = textContent
     newDiv.style.backgroundColor = "rgba";
@@ -175,8 +177,7 @@ function reply_click(clicked_id) {
       if (total_cnt.indexOf(고유값) != -1) {
         let scroll = confirm(
           "이미 담겨있어서 " +
-            for_temp +
-            clicked_id +
+            고유값 +
             " 하나 더 추가했어요.\n장바구니로 이동할까요?"
         );
         const opControl = document.getElementById("optionControl");
@@ -199,7 +200,7 @@ function reply_click(clicked_id) {
         }
         // {키'선택한메뉴': 메뉴가 클릭된 수'ea_count'}
         // 객체의 value 를 뽑아내야한다.
-        ea_ct[고유값] = ea_count;
+        ea_ct[고유값] = ea_count; //고유값이란 키가 없다면 추가하여 그 값을 ea_count 로 해준다.
       }
       //ea_coun 가 중첩되지않게 for문 끝나자마자 초기화
       ea_count = 0;
@@ -245,8 +246,7 @@ function reply_click(clicked_id) {
       if (total_cnt.indexOf(고유값) != -1) {
         let scroll = confirm(
           "이미 담겨있어서 " +
-            for_temp +
-            clicked_id +
+            고유값 +
             " 하나 더 추가했어요.\n장바구니로 이동할까요?"
         );
         const opControl = document.getElementById("optionControl");
@@ -283,8 +283,7 @@ function reply_click(clicked_id) {
       if (total_cnt.indexOf(고유값) != -1) {
         let scroll = confirm(
           "이미 담겨있어서 " +
-            for_temp +
-            clicked_id +
+            고유값 +
             " 하나 더 추가했어요.\n장바구니로 이동할까요?"
         );
         const opControl = document.getElementById("optionControl");
@@ -332,7 +331,7 @@ function reply_click(clicked_id) {
   //최종결제금액
   final_price();
 }
-// 최종결제금액
+// 최종결제금액 구해주는 함수
 let finalPrice = 0;
 function final_price() {
   finalPrice = 0;
@@ -340,6 +339,31 @@ function final_price() {
     finalPrice += parseInt(ea_price[i].value);
   }
   document.getElementById("final_price").value = finalPrice;
+}
+
+//장바구니 품목 +버튼
+function add(add_Btn) {
+  const add_btn = add_Btn.parentNode.parentNode;
+  const add_bt = add_Btn.previousSibling;
+  total_cnt.push(add_btn.textContent);
+  ea_ct[add_btn.textContent] += 1;
+}
+
+//장바구니 품목 삭제
+function del(del_Btn) {
+  const del_btn = del_Btn.parentNode.parentNode; // del_btn 변수에 클릭한 버튼의 조부를 담음. form -> myDiv
+  console.log(del_btn.textContent); // 클릭한 것의 조부에 뭐가쓰여있는 확인
+  del_btn.remove(); //myDiv 삭제
+  //삭제 해주고 quan과 ea_price의 연산을 돕던 total_cnt안에 있는 del_btn의 값을 빼줘야한다.
+  for (let i = 0; i < total_cnt.length; i++) {
+    if (total_cnt[i] == del_btn.textContent) {
+      total_cnt.splice(i, 1); //total_cnt i 번째가 클릭한 것의 mydiv와 같을 경우 그 값을 삭제한다
+      console.log(total_cnt);
+      i--; //삭제되는 순간 배열의 길이가 줄어들기 때문에 i를 다시 줄여줘서 원래 반복하는 만큼 할수있게해준다.
+    }
+  }
+  final_price(); // 총 결제금액 함수를 다시 써서 갱신 시켜준다. 이 함수는 ea_price로 정한다.
+  delete ea_ct[del_btn.textContent]; //총 결제금액을 갱신하고 ea_ct 객체에 저장되어있던 클릭한 메뉴를 삭제시킨다.
 }
 
 // '주문하러가기!' 버튼 클릭시 실행
@@ -362,123 +386,3 @@ function pay_go() {
     document.getElementById("final_price").value * 0.01
   );
 }
-// let arr = [];
-
-// for (let i = 0; i < quan.length; i++) {
-//   const akskksk = {
-//     menu: myDiv[i].textContent,
-//     cnt: quan[i].value,
-//   };
-//   arr.push(akskksk);
-// }
-// JSON.stringify(arr);
-// localStorage.setItem(Date.now(), arr);
-
-/* 쓸지도 모르는 계산 로직
-function hot_price(){
-    for (let i = 0; i < menu_arr.length; i++){//따뜻한 M
-        if (i>=11&&inherent_value==menu_arr[i]){  
-            default_price=3000;
-            console.log(default_price);
-            for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                if(premium_menu_arr[x]==inherent_value){ //비싼메뉴가 선택됐을때
-                    default_price+=500; //500을더한다.
-                    console.log(default_price);
-                }
-            } 
-        }
-    }console.log(default_price);
-    for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
-            if (r>=11&&inherent_value==menu_Lsize_arr[r]){  
-                default_price+=1000;
-                console.log(default_price);
-                for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                    if(premium_menu_arr[x]==inherent_value){ //비싼메뉴가 선택됐을때
-                        default_price+=500; //500을더한다.
-                        console.log(default_price);
-                    }
-                } 
-            }
-    }
-}
-
-function ice_price(){
-    for (let i = 0; i < menu_arr.length; i++){
-        if (i<8&&inherent_value==menu_arr[i]){  
-            default_price+=500;
-            console.log(default_price);
-            for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                if(premium_menu_arr[x]==inherent_value){ //비싼메뉴가 선택됐을때
-                    default_price+=500; //500을더한다.
-                    console.log(default_price);
-                }
-            }
-        } 
-    }
-    for (let r = 0; r < menu_Lsize_arr.length; r++) {//L사이즈
-        if (r<8&&inherent_value==menu_Lsize_arr[r]){  
-            default_price+=1500;
-            console.log(default_price);
-            for (let x = 0; x < premium_menu_arr.length; x++) {//비싼메뉴 선택
-                if(premium_menu_arr[x]==inherent_value){ //비싼메뉴가 선택됐을때
-                    default_price+=500; //500을더한다.
-                    console.log(default_price);
-                }
-            }
-        }
-    }
-  }
-*/
-
-// function 이거도같이(clicked_id){
-
-//장바구니 수량 올리는 함수 92~126
-// let 가격 = document.getElementById(newDiv);
-// let amount;
-// init();
-//     function init () {
-//         가격 = document.form.sell_price.value; //form 안에있는 sell_price의 value 값을 sell_priceamount에 담음 ->가격
-//         amount = document.form.amount.value; //form 안에있는 amount 의 value 값을 amount 라는 이름의 amount에 담음 ->수량 조절
-//         document.form.sum.value = sell_price; // 읽기전용인 sum 의 value 값을 위에서 선언한 sell_price로 한다.
-//         change(); //change 함수 실행
-//     }
-
-//     function add () {
-//         hm = document.form.amount;
-//         sum = document.form.sum;
-//         hm.value ++ ;
-//          sum.vlue = parseInt(hm.value) * sell_price;
-// }
-
-//     function del () {
-//         hm = document.form.amount;// form 안에있는 amount 를 hm 에 담음
-//         sum = document.form.sum; // form 안에있는 sum을 sum에 담음
-//         if (hm.value > 1) { // hm의 value 가 1보다 클 경우에 -버튼을 누를경우 hm(amount)의 value를 1 줄이고
-//         hm.value -- ;
-//         sum.value = parseInt(hm.value) * sell_price;//sum의 value
-//         }
-//     }
-
-//     function change () {
-//         hm = document.form.amount; //form 안에있는 amount를 hm에 담음
-//         sum = document.form.sum; // form 안에있는 sum을 sum에 담음
-
-//         if (hm.value < 0) { //만약 hm의 value가 0보다 작으면 value 를 0이라 한다.
-//         hm.value = 0;
-//         }
-//         sum.value = parseInt(hm.value) * sell_price; //sum value 값을 int값으로 바꿔주고 sell_price의 value값과 곱해준다.
-//     }
-
-// "<input type=hidden name='sell_price' value='10000000000000000000'>"
-// "<input type='button' value=' - '' onclick='del();'>"
-// "<input type='text' name='amount' value='1' size='2' onchange='change();'>"
-// "<input type='button' value=' + ' onclick='add();'>"
-// "<input type='text' name='sum' style='border: 0px none;'' size='3' readonly>원"
-
-//아래원본
-
-// +" <div align='left'>"
-// +"<input type='button' onclick='discount()' value = '-'><span class='연산' value='마'></span></input>"
-// +"<input style=width:20px; type='text' id='result' value=1></input>"
-// +"<input type='button' onclick='count()' value = '+'><span class='연산' value='플'></span></input>"
-// +" 개 "+"<text value ='1'>원</text></div>"

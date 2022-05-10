@@ -3,6 +3,7 @@
 let set_arr = new Set([]);
 let total_cnt = []; //총 수량으로 ;
 let ea_ct = {};
+let ea_pc = {};
 let for_temp = ["따뜻한", "아이스"]; //order()에 사용됨;
 const menu_Lsize_arr = [
   "아이스 아메리카노L",
@@ -175,15 +176,11 @@ function reply_click(clicked_id) {
       } //여기까지 가격을 구하는 코드
       //아래는 장바구니 중복 방지 코드 div를 삭제하는 것.
       if (total_cnt.indexOf(고유값) != -1) {
-        let scroll = confirm(
-          "이미 담겨있어서 " +
-            고유값 +
-            " 하나 더 추가했어요.\n장바구니로 이동할까요?"
-        );
+        alert(고유값 + " 하나 더 담았어요!");
         const opControl = document.getElementById("optionControl");
-        if (scroll) {
-          opControl.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
+
+        opControl.scrollIntoView({ behavior: "smooth", block: "center" });
+
         newDiv.remove();
       }
       for_ade_temp = 0;
@@ -211,12 +208,14 @@ function reply_click(clicked_id) {
         //myDiv = 클릭하면서 생겨난 메뉴이름을 textContent로 가진 div
         //클릭한 이름이 mydiv와 같다면
         if (고유값 == myDiv[i].textContent) {
-          //i번째 수량의 값에다가 = ea_ct객체의 [i]번째 키의 value를 담는것
-          //각 메뉴마다 클릭할때마다 total_cnt 배열에 고유값이 쌓이고 이것은 고유값 : 1+2+~~ 이런식으로 저장된다.
-          quan[i].value = Object.values(ea_ct)[i];
-          //i번째 금액 값에다가 위에서 계산한 클릭한메뉴의 값과 i번째 수량과 곱한 값을 담는다
-          ea_price[i].value = default_price * quan[i].value; //금액은 위에서 계산한거 * 수량이다.
-          //버그였는데 if문으로 해결했다.(근데 포문에서 계속 돌리니깐 클릭하는 메뉴의 가격으로 전부 연산이되어버림).
+          if (quan[i].value > 9) {
+            alert("한 메뉴를 10개 이하로 담아주세요!");
+            ea_ct[고유값] -= 1;
+            console.log(ea_ct[고유값]);
+            total_cnt.pop();
+          }
+          quan[i].value = ea_ct[고유값];
+          ea_price[i].value = default_price * quan[i].value;
         }
       }
       //함수가 실행될때마다 default_price의 값은 초기화되므로 아래 코드는 필요없음.
@@ -244,15 +243,9 @@ function reply_click(clicked_id) {
         }
       }
       if (total_cnt.indexOf(고유값) != -1) {
-        let scroll = confirm(
-          "이미 담겨있어서 " +
-            고유값 +
-            " 하나 더 추가했어요.\n장바구니로 이동할까요?"
-        );
+        alert(고유값 + " 하나 더 담았어요!");
         const opControl = document.getElementById("optionControl");
-        if (scroll) {
-          opControl.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
+        opControl.scrollIntoView({ behavior: "smooth", block: "center" });
         newDiv.remove();
       }
       for_ade_temp = 0;
@@ -281,15 +274,11 @@ function reply_click(clicked_id) {
       }
 
       if (total_cnt.indexOf(고유값) != -1) {
-        let scroll = confirm(
-          "이미 담겨있어서 " +
-            고유값 +
-            " 하나 더 추가했어요.\n장바구니로 이동할까요?"
-        );
+        alert(고유값 + " 하나 더 담았어요!");
         const opControl = document.getElementById("optionControl");
-        if (scroll) {
-          opControl.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
+
+        opControl.scrollIntoView({ behavior: "smooth", block: "center" });
+
         newDiv.remove();
       }
       for_ade_temp = 0;
@@ -297,6 +286,8 @@ function reply_click(clicked_id) {
       set_arr.add(고유값);
       연산();
     }
+    ea_pc[고유값] = default_price;
+    console.log(ea_pc);
   }
   //function 연산 = [클릭시 생성된 div의 수량, 가격을 수정]
   function 연산() {
@@ -309,7 +300,13 @@ function reply_click(clicked_id) {
     ea_count = 0;
     for (let i = 0; i < quan.length; i++) {
       if (고유값 == myDiv[i].textContent) {
-        quan[i].value = Object.values(ea_ct)[i];
+        if (quan[i].value > 9) {
+          alert("한 메뉴를 10개 이하로 담아주세요!");
+          ea_ct[고유값] -= 1;
+          console.log(ea_ct[고유값]);
+          total_cnt.pop();
+        }
+        quan[i].value = ea_ct[고유값];
         ea_price[i].value = default_price * quan[i].value;
       }
     }
@@ -341,12 +338,39 @@ function final_price() {
   document.getElementById("final_price").value = finalPrice;
 }
 
-//장바구니 품목 +버튼
+//장바구니 +버튼
 function add(add_Btn) {
   const add_btn = add_Btn.parentNode.parentNode;
-  const add_bt = add_Btn.previousSibling;
+  const add_bot_bro = add_Btn.nextSibling;
+  const add_top_bro = add_Btn.previousSibling;
   total_cnt.push(add_btn.textContent);
   ea_ct[add_btn.textContent] += 1;
+  if (add_top_bro.value > 9) {
+    alert("한 메뉴를 10개 이하로 담아주세요!");
+    ea_ct[add_btn.textContent] -= 1;
+    console.log(ea_ct[add_btn.textContent]);
+    total_cnt.pop();
+  }
+  add_top_bro.value = ea_ct[add_btn.textContent];
+  add_bot_bro.value = add_top_bro.value * ea_pc[add_btn.textContent];
+  final_price();
+}
+//장바구니 -버튼
+function dec(dec_Btn) {
+  const dec_btn = dec_Btn.parentNode.parentNode;
+  const dec_bot_bro = dec_Btn.nextSibling; // quan을 지정
+  const dec_top_bro = dec_Btn.nextSibling.nextSibling.nextSibling; //ea_price를 지정
+  total_cnt.splice(dec_btn.textContent, 1);
+  ea_ct[dec_btn.textContent] -= 1;
+  if (dec_bot_bro.value == 1) {
+    alert("최소 한개 이상 담아주세요!");
+    ea_ct[dec_btn.textContent] += 1;
+    console.log(ea_ct[dec_btn.textContent]);
+    total_cnt.push(dec_btn.textContent);
+  }
+  dec_bot_bro.value = ea_ct[dec_btn.textContent];
+  dec_top_bro.value = dec_bot_bro.value * ea_pc[dec_btn.textContent];
+  final_price();
 }
 
 //장바구니 품목 삭제
@@ -363,7 +387,9 @@ function del(del_Btn) {
     }
   }
   final_price(); // 총 결제금액 함수를 다시 써서 갱신 시켜준다. 이 함수는 ea_price로 정한다.
-  delete ea_ct[del_btn.textContent]; //총 결제금액을 갱신하고 ea_ct 객체에 저장되어있던 클릭한 메뉴를 삭제시킨다.
+  //아래 두 코드는 메뉴 수량, 메뉴 가격 담는것. 활용해서 수량조절버튼 만들것.
+  delete ea_ct[del_btn.textContent];
+  delete ea_pc[del_btn.textContent];
 }
 
 // '주문하러가기!' 버튼 클릭시 실행

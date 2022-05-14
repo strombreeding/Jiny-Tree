@@ -176,11 +176,11 @@ function reply_click(clicked_id) {
       } //여기까지 가격을 구하는 코드
       //아래는 장바구니 중복 방지 코드 div를 삭제하는 것.
       if (total_cnt.indexOf(고유값) != -1) {
-        alert(고유값 + " 하나 더 담았어요!");
-        const opControl = document.getElementById("optionControl");
-
-        opControl.scrollIntoView({ behavior: "smooth", block: "center" });
-
+        if (ea_ct[고유값] <= 9) {
+          alert(고유값 + " 하나 더 담았어요!");
+          const opControl = document.getElementById("optionControl");
+          opControl.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
         newDiv.remove();
       }
       for_ade_temp = 0;
@@ -243,9 +243,11 @@ function reply_click(clicked_id) {
         }
       }
       if (total_cnt.indexOf(고유값) != -1) {
-        alert(고유값 + " 하나 더 담았어요!");
-        const opControl = document.getElementById("optionControl");
-        opControl.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (ea_ct[고유값] <= 9) {
+          alert(고유값 + " 하나 더 담았어요!");
+          const opControl = document.getElementById("optionControl");
+          opControl.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
         newDiv.remove();
       }
       for_ade_temp = 0;
@@ -274,11 +276,11 @@ function reply_click(clicked_id) {
       }
 
       if (total_cnt.indexOf(고유값) != -1) {
-        alert(고유값 + " 하나 더 담았어요!");
-        const opControl = document.getElementById("optionControl");
-
-        opControl.scrollIntoView({ behavior: "smooth", block: "center" });
-
+        if (ea_ct[고유값] <= 9) {
+          alert(고유값 + " 하나 더 담았어요!");
+          const opControl = document.getElementById("optionControl");
+          opControl.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
         newDiv.remove();
       }
       for_ade_temp = 0;
@@ -390,6 +392,36 @@ function del(del_Btn) {
   //아래 두 코드는 메뉴 수량, 메뉴 가격 담는것. 활용해서 수량조절버튼 만들것.
   delete ea_ct[del_btn.textContent];
   delete ea_pc[del_btn.textContent];
+}
+
+//장바구니 비우기
+
+function del_basket() {
+  let order = confirm("장바구니를 비우시겠습니까?");
+  const del_sel = document.getElementById("optionControl");
+  // const del_all = del_sel.nextSibling; //버튼 아래 있는 놈
+  if (order) {
+    // del_all.remove();
+    // obj = document.getElementById("re");
+    // newDiv = document.createElement("ul");
+    // newDiv.innerHTML = "";
+    // newDiv.setAttribute("id", "optionControl"); //inherent_value = textContent
+    // newDiv.style.backgroundColor = "rgba";
+    // obj.appendChild(newDiv);
+    for (let i = 0; i < total_cnt.length; i++) {
+      total_cnt.splice(i, 1);
+      i--;
+    }
+    while (del_sel.hasChildNodes()) {
+      del_sel.removeChild(del_sel.firstChild);
+    }
+
+    final_price();
+    delete ea_ct[del_all.textContent];
+    delete ea_pc[del_all.textContent];
+  } else {
+    alert("취소");
+  }
 }
 
 // '주문하러가기!' 버튼 클릭시 실행

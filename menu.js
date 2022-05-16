@@ -74,31 +74,37 @@ function addice() {
   const hidden_img = document.getElementsByName("hidden_img");
   alert("      아이스 추가+500원");
   let iceadd = document.getElementsByClassName("menu_price");
+  let ice_price = document.getElementsByClassName("ice_price");
   for (let i = 0; i < iceadd_name.length; i++) {
     hidden_img[i].classList.remove("hidden_img");
     hidden_img[i].classList.add("hidden_img_size");
   }
   for (let i = 0; i < iceadd.length; i++) {
-    iceadd[i].innerHTML = "price M=3,500원 L=4,500원";
+    iceadd[i].innerHTML = "M=3,500원 L=4,500원";
+    ice_price[i].textContent = "";
   }
   let iceadd2 = document.getElementsByClassName("menu_price1");
   for (let i = 0; i < iceadd2.length; i++) {
-    iceadd2[i].innerHTML = "price M=4,000원 L=5,000원";
+    iceadd2[i].innerHTML = "M=4,000원 L=5,000원";
+    ice_price[i].textContent = "";
   }
   add_temp = 1;
 }
 function addhot() {
   let hotadd = document.getElementsByClassName("menu_price");
+  let ice_price = document.getElementsByClassName("ice_price");
   for (let i = 0; i < iceadd_name.length; i++) {
     hidden_img[i].classList.add("hidden_img");
   }
 
   for (let i = 0; i < hotadd.length; i++) {
-    hotadd[i].innerHTML = "price M=3,000원 L=4,000원";
+    hotadd[i].innerHTML = "M=3,000원 L=4,000원";
+    ice_price[i].textContent = "아이스 +500원";
   }
   let hotadd2 = document.getElementsByClassName("menu_price1");
   for (let i = 0; i < hotadd2.length; i++) {
-    hotadd2[i].innerHTML = "price M=3,500원 L=4,500원";
+    hotadd2[i].innerHTML = "M=3,500원 L=4,500원";
+    ice_price[i].textContent = "아이스 +500원";
   }
   add_temp = 0;
 }
@@ -395,30 +401,26 @@ function del(del_Btn) {
 }
 
 //장바구니 비우기
-
 function del_basket() {
   let order = confirm("장바구니를 비우시겠습니까?");
   const del_sel = document.getElementById("optionControl");
-  // const del_all = del_sel.nextSibling; //버튼 아래 있는 놈
   if (order) {
-    // del_all.remove();
-    // obj = document.getElementById("re");
-    // newDiv = document.createElement("ul");
-    // newDiv.innerHTML = "";
-    // newDiv.setAttribute("id", "optionControl"); //inherent_value = textContent
-    // newDiv.style.backgroundColor = "rgba";
-    // obj.appendChild(newDiv);
-    for (let i = 0; i < total_cnt.length; i++) {
-      total_cnt.splice(i, 1);
-      i--;
+    if (total_cnt.length < 1) {
+      alert("한개 이상 담아주세요!");
+    } else {
+      for (let i = 0; i < total_cnt.length; i++) {
+        //총 수량도 초기화 시켜줘야함
+        total_cnt.splice(i, 1);
+        i--;
+      }
+      while (del_sel.hasChildNodes()) {
+        //부모가 자식을 가졌을경우 반복문
+        del_sel.removeChild(del_sel.firstChild); //가지고있는 자녀를 지움 을 반복
+      }
+      final_price();
+      delete ea_ct[del_all.textContent]; //ea_ct 품목별 수량이므로 초기화 시켜줘야함.
+      delete ea_pc[del_all.textContent]; //ea_pc 는 품목별 가격을 객체에 담아놓은 것뿐이라 굳이 초기화가 필요하진 않다.
     }
-    while (del_sel.hasChildNodes()) {
-      del_sel.removeChild(del_sel.firstChild);
-    }
-
-    final_price();
-    delete ea_ct[del_all.textContent];
-    delete ea_pc[del_all.textContent];
   } else {
     alert("취소");
   }
@@ -426,16 +428,18 @@ function del_basket() {
 
 // '주문하러가기!' 버튼 클릭시 실행
 function pay_go() {
+  let random = String(parseInt(Math.random() * 1000000)).padStart(6, "0");
   let server = [];
   for (let i = 0; i < quan.length; i++) {
-    const bill_num = {
-      menu: myDiv[i].textContent,
-      cnt: quan[i].value,
-    };
+    const bill_num = [
+      //영수증 번호라는 객체에 menu, cnt 를 각각 담는걸 반복.
+      myDiv[i].textContent + " " + quan[i].value + "개",
+      " " + ea_price[i].value + "원", //만약 금액까지 추가한다면 ea_price[i].value 까지 해주면 된다.
+    ];
     server.push(bill_num);
   }
-  localStorage.setItem(Date.now(), JSON.stringify(server));
-  localStorage.setItem("영수증번호", Date.now());
+  localStorage.setItem(random, JSON.stringify(server));
+  localStorage.setItem("영수증번호", random);
   // JSON.parse(localStorage.getItem(Date.now()));
   window.name = "menu";
   window.open("run_moduel.html", "주문표 확인"); // 결제모듈 실행

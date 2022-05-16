@@ -12,10 +12,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="reward.css" />
+    <script src="reward.js"></script>
   </head>
-  <script type="text/javascript">
-    // bill();
-  </script>
+
   <body>
     <header>
       <div id="div1">
@@ -36,12 +35,7 @@
             aria-label="영수증 번호"
             aria-describedby="button-addon2"
           />
-          <button
-            class="btn btn-outline-secondary"
-            style="margin-top: 5px"
-            type="button"
-            id="button-addon2"
-          >
+          <button style="margin-top: 5px" type="button" onclick="look_bill();">
             serch!
           </button>
         </form>
@@ -49,9 +43,7 @@
     </section>
 
     <footer style="margin-top: 30px">
-      결제 내역
-      <div>메뉴<span>수량</span></div>
-      <div>총 원</div>
+      <ol id="reward"></ol>
     </footer>
   </body>
 </html>

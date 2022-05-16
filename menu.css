@@ -23,14 +23,18 @@ h1 {
 .basket{
     background-color: rgba(104, 100, 95, 0.527);
     color: rgb(33, 24, 151);
+    text-align: center;
 }
-
 .menu_name{
     display: inline;
     bottom: 85px;
     position: relative;
 }
-
+.ice_price{
+    left: 108px;
+    top: 5px;
+    position: relative;
+}
 .menu_price{
     left: 108px;
     top: 5px;
@@ -53,8 +57,6 @@ h1 {
 
 
 body {
-    width:  100%;
-    margin-left: 10% ;
     margin-top: 0px;
     background-color: rgba(36, 161, 113, 0.603);
 }

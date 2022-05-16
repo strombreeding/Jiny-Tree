@@ -1,5 +1,10 @@
+"use strict";
 let clip = localStorage.getItem("영수증번호");
 let double = 0;
+let textArea;
+function run() {
+  alert("영수증 번호 : " + clip);
+}
 function copy_clip() {
   alert(clip + " 가 클립보드에 복사되었습니다.\n결제내역조회으로 이동합니다!");
   if (double < 1) {
@@ -12,6 +17,8 @@ function copy_clip() {
   let recipe = document.getElementById("textArea");
   recipe.select();
   document.execCommand("copy");
-  location.href = "https://jinytreecafe.netlify.app/reward.html";
+  window.localStorage.removeItem("주문");
+  window.localStorage.removeItem("영수증번호");
+  location.href = "https://jineecafe.netlify.app/reward.html";
   double += 1;
 }

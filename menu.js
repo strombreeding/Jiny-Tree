@@ -75,7 +75,7 @@ function addice() {
   alert("      아이스 추가+500원");
   let iceadd = document.getElementsByClassName("menu_price");
   let ice_price = document.getElementsByClassName("ice_price");
-  for (let i = 0; i < iceadd_name.length; i++) {
+  for (let i = 0; i < iceadd_name.length - 3; i++) {
     hidden_img[i].classList.remove("hidden_img");
     hidden_img[i].classList.add("hidden_img_size");
   }
@@ -84,16 +84,17 @@ function addice() {
     ice_price[i].textContent = "";
   }
   let iceadd2 = document.getElementsByClassName("menu_price1");
+  let ice_price2 = document.getElementsByClassName("ice_price1");
   for (let i = 0; i < iceadd2.length; i++) {
     iceadd2[i].innerHTML = "M=4,000원 L=5,000원";
-    ice_price[i].textContent = "";
+    ice_price2[i].textContent = "";
   }
   add_temp = 1;
 }
 function addhot() {
   let hotadd = document.getElementsByClassName("menu_price");
   let ice_price = document.getElementsByClassName("ice_price");
-  for (let i = 0; i < iceadd_name.length; i++) {
+  for (let i = 0; i < iceadd_name.length - 3; i++) {
     hidden_img[i].classList.add("hidden_img");
   }
 
@@ -102,9 +103,10 @@ function addhot() {
     ice_price[i].textContent = "아이스 +500원";
   }
   let hotadd2 = document.getElementsByClassName("menu_price1");
+  let ice_price2 = document.getElementsByClassName("ice_price1");
   for (let i = 0; i < hotadd2.length; i++) {
     hotadd2[i].innerHTML = "M=3,500원 L=4,500원";
-    ice_price[i].textContent = "아이스 +500원";
+    ice_price2[i].textContent = "아이스 +500원";
   }
   add_temp = 0;
 }
@@ -153,10 +155,10 @@ function reply_click(clicked_id) {
       고유값 +
       "<form name='form'>" +
       "<input type='button' value='-' onclick='dec(this);'>" +
-      "<input type='text' max='10' class='quan' value='1' size='1'readonly >" +
+      "<input type='text' max='10' class='quan' value='1' size='2'readonly >" +
       "<input type='button' value='+' onclick='add(this);'>" +
-      "<input type='text' name='sum' style='border: none;' size='4' readonly>" +
-      "<input type='text' size='2' readonly  value='원'>" +
+      "<input type='text' name='sum' style='border: none;' size='5' readonly>" +
+      "<input type='text' size='2' style='border:none;' readonly value='원'>" +
       "<input type='button' value='X' onclick='del(this);'" +
       "</form>";
     newDiv.setAttribute("class", "myDiv"); //inherent_value = textContent
@@ -422,7 +424,7 @@ function del_basket() {
       delete ea_pc[del_all.textContent]; //ea_pc 는 품목별 가격을 객체에 담아놓은 것뿐이라 굳이 초기화가 필요하진 않다.
     }
   } else {
-    alert("취소");
+    undefined;
   }
 }
 
@@ -438,6 +440,7 @@ function pay_go() {
     ];
     server.push(bill_num);
   }
+  server.push(document.getElementById("final_price").value);
   localStorage.setItem(random, JSON.stringify(server));
   localStorage.setItem("영수증번호", random);
   // JSON.parse(localStorage.getItem(Date.now()));
@@ -447,4 +450,18 @@ function pay_go() {
     "주문",
     document.getElementById("final_price").value * 0.01
   );
+}
+
+//navBar
+function go_coffee() {
+  const go_tab = document.getElementById("coffee");
+  go_tab.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function go_tea() {
+  const go_tab = document.getElementById("tea");
+  go_tab.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function go_ade() {
+  const go_tab = document.getElementById("ade");
+  go_tab.scrollIntoView({ behavior: "smooth", block: "start" });
 }

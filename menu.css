@@ -93,10 +93,16 @@ h1 {
     width: 45%
   
 }
+#op_sel{
+    font-size: 30px;
+    text-align: center;
+}
 #cButton{
     font-size: larger;
     text-align: center;
     margin-bottom: 50px;
+    position: sticky;
+    top: 9%;
 }
 .ctype{
     height: 35px;

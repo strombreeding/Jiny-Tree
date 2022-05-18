@@ -1,67 +1,165 @@
+*{
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Jua', sans-serif; 
+}
+
+#nav_bar{
+    position: sticky;
+    top: 0;
+    background-color: black;
+}
+
+body:after{
+    content: "";
+    position: fixed;
+    top:0;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: url(https://github.com/strombreeding/Jiny-Tree/blob/main/img/realback%20cum.jpg?raw=true)center top;
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover; */
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+#onlyIce{
+    font-family: 'Indie Flower', cursive;
+    font-size: 1cm;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#따뜻한{
+    font-size:larger;
+    width: 15%;
+
+}
+
+#아이스{
+    font-size: larger;
+        width: 15%;
+
+
+}
+
+.ul_menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: large;
+    list-style: none;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: large;
+    background-color: rgb(15, 17, 15);
+    color: rgb(225, 222, 222);
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+}
+#menu_div{
+    position: relative;
+    float: left;
+}
+.test{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    font-size: 25px;
+    padding: 0px 30%;
+}
+
 h1 {
     text-align: center;
     font-size: 33px;
-    background-color: rgb(15, 17, 15);
-    color: white;
+    background-color: rgb(33, 37, 41);
+    color: rgb(225, 222, 222);
     margin-top: 0px;
     margin-bottom: 10px;
 }
-.button{
-    left: 108px;
-    top: 15px;
-    width: 45px;
-    height: 45px;
-    position: relative;
+
+[name="btn"]{
+    flex-direction: row;
+    width: 45%
+  
+}
+#op_sel{
+    font-size: 30px;
+    text-align: center;
 }
 #cButton{
+    display: flex;
+    justify-content: space-between;
+    font-size: larger;
     text-align: center;
     margin-bottom: 50px;
+    position: sticky;
+    top: 25%;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .ctype{
     height: 35px;
 }
 .basket{
-    background-color: rgba(104, 100, 95, 0.527);
-    color: rgb(33, 24, 151);
+    background-color: rgb(33, 37, 41);
+    color: rgb(225, 222, 222);
+    text-align: center;
+    width: 100%;
 }
-
 .menu_name{
-    display: inline;
-    bottom: 85px;
-    position: relative;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    margin: 0;
 }
 
+h3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ice_price{
+
+    display: flex;
+}
 .menu_price{
-    left: 108px;
-    top: 5px;
-    position: relative;
+
+    display: flex;
+
 }
 .menu_price1{
-    left: 108px;
-    top: 5px;
-    position: relative;
+
+    display: flex;
+
 } 
 .menu_price_ade{
-    left: 108px;
-    top: 5px;
-    position: relative;
+    display: flex;
 } 
-.menu_pic{
-    width: 100px;
-    height: 100px;
+#menu_pic{
+    width: 30%;
+    height: 30%;
 }
 
 
 body {
-    width:  100%;
-    margin-left: 10% ;
-    margin-top: 0px;
+    margin: 0;
     background-color: rgba(36, 161, 113, 0.603);
 }
 
-.button:hover{
-    color:rgb(187, 30, 30)
-}
+
 
 #pay-button-좌표{
     text-align: center;
@@ -69,9 +167,10 @@ body {
 #pay_button{
     width: 250px;
     height: 50px;
-    color: white;
+    color: rgb(225, 222, 222);
     background-color: rgba(0, 0, 0, 0.87);
     font-size: 25px;
+    border: none;
 }
 .count{
     width: 35px;
@@ -84,4 +183,27 @@ body {
 .hidden_img_size{
     width: 10%;
     height: 10%;
+}
+.hidden_ice{
+    display: none;
+}
+.hidden_hot{
+    display: none;
+}
+.null{
+    display: ;
+}
+#del_basket{
+    justify-content: end;
+    font-size: 100%;
+    padding: 3% 5%;
+}
+
+.del_basket{
+    padding-right: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+#total_price{
+    text-align: end;
 }

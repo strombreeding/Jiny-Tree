@@ -1,0 +1,73 @@
+*{
+  font-family: 'Indie Flower', cursive;
+  font-family: 'Jua', sans-serif; 
+}
+
+  .back_img{
+    height: 800px;
+    background-image: url('https://github.com/strombreeding/Jiny-Tree/blob/main/img/realback%20cum.jpg?raw=true');
+  }
+@media screen and (max-width: 400px ){
+  .back_img{
+
+    height: 800px;
+    background-image: url('https://github.com/strombreeding/Jiny-Tree/blob/main/img/img_src/realback.jpg?raw=true');
+  }
+}
+header {
+  font-size: 33px;
+  text-align: center;
+  color: white;
+
+}
+#menu_sct{
+  display: flex;
+  position: relative;
+}
+#bill_sct{
+
+  display: flex; 
+  position: relative;
+} 
+main{
+
+  justify-content: space-around;
+  display: flex;
+
+}
+
+
+h1 {
+  margin-top: 0;
+  padding-top: 100px;
+}
+
+body {
+  text-align: center;
+  margin: 0;
+}
+button {
+  width: 100px;
+  height: 40px;
+  font-size: large;
+}
+#bill_sct{
+  display: flex;
+}
+#menu_sct{
+  display: flex;
+  margin-bottom: 5%;
+}
+
+h1 span:nth-child(1) {
+  color: #003d33;
+}
+h1 span:nth-child(2) {
+  color: #4e342e;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}

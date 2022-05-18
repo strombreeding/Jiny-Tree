@@ -430,6 +430,21 @@ function del_basket() {
 
 // '주문하러가기!' 버튼 클릭시 실행
 function pay_go() {
+  let right_Now = new Date();
+  let time =
+    right_Now.getFullYear() +
+    "-" +
+    (right_Now.getMonth() + 1) +
+    "-" +
+    right_Now.getDate() +
+    " " +
+    right_Now.getHours() +
+    "시 " +
+    right_Now.getMinutes() +
+    "분 " +
+    right_Now.getSeconds() +
+    "초";
+
   let random = String(parseInt(Math.random() * 1000000)).padStart(6, "0");
   let server = [];
   for (let i = 0; i < quan.length; i++) {
@@ -440,6 +455,7 @@ function pay_go() {
     ];
     server.push(bill_num);
   }
+  server.push(time);
   server.push(document.getElementById("final_price").value);
   localStorage.setItem(random, JSON.stringify(server));
   localStorage.setItem("영수증번호", random);

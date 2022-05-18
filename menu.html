@@ -50,7 +50,6 @@
             <li class="li_munu">메뉴의 사이즈를 클릭하면 장바구니에 GET!</li>
             <li class="li_munu">*추가 금액 발생<br> -아이스 +500원<br> -L사이즈 +1000원</li>
         </ul>
-        <li id="op_sel">온도를 선택해주세요!<br>HOT   :   ICE</li>
         <article id="cButton">
             <button id='따뜻한' class="btn btn-danger"  onClick="addhot()"><i class="fa-solid fa-mug-hot"></i></button>
             <button id='아이스' class="btn btn-primary"  onClick="addice()"><i class="fa-solid fa-glass-water"></i></button>
@@ -61,35 +60,35 @@
         <h1 id=coffee>Coffee</h1>
             <div>
                 <h3>
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[94]_20210430103337006.jpg"></img>
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[94]_20210430103337006.jpg">
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110563]_20210426095937808.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">아메리카노
                         <div class="menu_price">M=3,000원 L=4,000원</div>
-                        <div class="ice_price">아이스 +500원</div>       
                         </div> 
                 </h3>
                 <div class="test">
                     <button name="btn" class="btn btn-secondary" id="아메리카노M" onClick="reply_click(this.id)">M</button>
                     <button name="btn" class="btn btn-secondary" id="아메리카노L" onClick="reply_click(this.id)">L</button>
                 </div>
-                <h3  id="coldbrew">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000038]_20210430113202458.jpg">
+                <h3  id="capu">
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[38]_20210415154821846.jpg">
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110601]_20210415143400773.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
-                    <div class="menu_name">콜드브루
+                    <div class="menu_name">카푸치노
                         <div class="menu_price">M=3,000원 L=4,000원</div>
-                        <div class="ice_price">아이스 +500원</div>  
                     </div>
                 </h3>
                 <div class="test">
-                    <button name="btn" class="btn btn-secondary" id="콜드브루M" onClick="reply_click(this.id)">M</button>
-                    <button name="btn" class="btn btn-secondary" id="콜드브루L" onClick="reply_click(this.id)">L</button>
+                    <button name="btn" class="btn btn-secondary" id="카푸치노M" onClick="reply_click(this.id)">M</button>
+                    <button name="btn" class="btn btn-secondary" id="카푸치노L" onClick="reply_click(this.id)">L</button>
                 </div>
                 <h3 id="cafelatte">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[41]_20210415133833725.jpg">
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[41]_20210415133833725.jpg">
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110569]_20210415143035989.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">카페라떼
                         <div class="menu_price1">M=3,500원 L=4,500원</div>
-                        <div class="ice_price1">아이스 +500원</div> 
                     </div>
                 </h3>
                 <div class="test">
@@ -97,11 +96,11 @@
                     <button name="btn" class="btn btn-secondary" id="카페라떼L" onClick="reply_click(this.id)">L</button>
                 </div>
                 <h3 id="maki">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[126197]_20210415154609863.jpg"></img>
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[126197]_20210415154609863.jpg"></img>
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110582]_20210415142706078.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">카라멜마끼야또
                         <div class="menu_price1">M=3,500원 L=4,500원</div>
-                        <div class="ice_price1">아이스 +500원</div>
                     </div>
                 </h3>
                 <div class="test">
@@ -113,23 +112,23 @@
         <h1 id="tea">Tea</h1>
             <div2>
                 <h3 id="kamomile">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000076]_20210415154920731.jpg"></img>
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000076]_20210415154920731.jpg"></img>
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000079]_20210415143641139.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">캐모마일
                         <div class="menu_price">M=3,000원 L=4,000원</div>
-                        <div class="ice_price">아이스 +500원</div> 
                     </div>
                 </h3>
                 <div class="test">
                     <button name="btn" class="btn btn-secondary" id="캐모마일M" onClick="reply_click(this.id)">M</button>
                     <button name="btn" class="btn btn-secondary" id="캐모마일L" onClick="reply_click(this.id)">L</button>
                 </div>
-                <h3 class="redpeper">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000016]_20210415153648533.jpg"></img>
+                <h3 id="redpeper">
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000016]_20210415153648533.jpg"></img>
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[4004000000019]_20210415142323353.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">블랙퍼스트 티
                         <div class="menu_price">M=3,000원 L=4,000원</div>
-                        <div class="ice_price">아이스 +500원</div>
                     </div>
                 </h3>
                 <div class="test">
@@ -137,11 +136,11 @@
                     <button name="btn" class="btn btn-secondary" id="블랙퍼스트L" onClick="reply_click(this.id)">L</button>
                 </div>
                 <h3 class="jasmin">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2022/04/[9200000002956]_20220411155551915.jpg"></img>
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2022/04/[9200000002956]_20220411155551915.jpg"></img>
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2022/04/[9200000002959]_20220411155904911.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">유자차
                         <div class="menu_price">M=3,000원 L=4,000원</div>
-                        <div class="ice_price">아이스 +500원</div>
                     </div>
                 </h3>
                 <div class="test">
@@ -149,11 +148,11 @@
                     <button name="btn" class="btn btn-secondary" id="유자차L" onClick="reply_click(this.id)">L</button>
                 </div>
                 <h3 class="hurb">
-                    <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000187]_20210419131229539.jpg"></img>
+                    <img id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000187]_20210419131229539.jpg"></img>
+                    <img id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000190]_20210419131723532.jpg">
                     <img class="hidden_img" name="hidden_img"src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true">
                     <div class="menu_name">자몽차
                         <div class="menu_price">M=3,000원 L=4,000원</div>
-                        <div class="ice_price">아이스 +500원</div>  
                     </div>
                 </h3>
                 <div class="test">
@@ -161,14 +160,14 @@
                     <button name="btn" class="btn btn-secondary" id="자몽차L" onClick="reply_click(this.id)">L</button>
                 </div>
             </div>
-        </h1>
+
         
         <h1 id="ade">Ade
         </h1>
         <div id="onlyIce">Only ICE</div>
         <div3>
             <h3 class="remon">
-                <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[107025]_20210419104757108.jpg"></img>
+                <img id="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[107025]_20210419104757108.jpg"></img>
                 <div class="menu_name">레몬에이드
                     <div class="menu_price_ade">M=3,000원 L=4,000원</div>
                 </div>
@@ -178,7 +177,7 @@
                 <button name="btn" class="btn btn-secondary" id="레몬에이드L" onClick="reply_click(this.id)">L<span style="display:none;" class="에이드">레몬에이드L</span></button>
             </div>
             <h3 class="apple">
-                <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[107051]_20210419112152119.jpg"></img>
+                <img id="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[107051]_20210419112152119.jpg"></img>
                 <div class="menu_name">라임에이드
                     <div class="menu_price_ade">M=3,000원 L=4,000원</div>
                 </div>
@@ -188,7 +187,7 @@
                 <button name="btn" class="btn btn-secondary" id="라임에이드L" onClick="reply_click(this.id)">L<span style="display:none;" class="에이드">라임에이드L</span></button>
             </div>
             <h3 class="jamon">
-                <img class="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000190]_20210419131723532.jpg"></img>
+                <img id="menu_pic" src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000190]_20210419131723532.jpg"></img>
                 <div class="menu_name">자몽에이드
                     <div class="menu_price_ade">M=3,000원 L=4,000원</div>
                 </div>
@@ -218,6 +217,8 @@
         <div id="pay-button-좌표" style="padding-bottom: 30px;">
             <button id="pay_button" onclick="pay_go();">주문하러 가기!</button>
         </div>
+        
+        <div>음료 사진 출처 :(스타벅스) https://www.starbucks.co.kr/menu/drink_list.do </div>
     </footer>
 
 </body>

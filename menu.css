@@ -40,12 +40,14 @@ body:after{
 
 #따뜻한{
     font-size:larger;
-    width: 30%;
+    width: 15%;
+
 }
 
 #아이스{
     font-size: larger;
-        width: 30%;
+        width: 15%;
+
 
 }
 
@@ -98,11 +100,15 @@ h1 {
     text-align: center;
 }
 #cButton{
+    display: flex;
+    justify-content: space-between;
     font-size: larger;
     text-align: center;
     margin-bottom: 50px;
     position: sticky;
-    top: 9%;
+    top: 25%;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .ctype{
     height: 35px;
@@ -142,7 +148,7 @@ h3{
 .menu_price_ade{
     display: flex;
 } 
-.menu_pic{
+#menu_pic{
     width: 30%;
     height: 30%;
 }
@@ -178,12 +184,21 @@ body {
     width: 10%;
     height: 10%;
 }
+.hidden_ice{
+    display: none;
+}
+.hidden_hot{
+    display: none;
+}
+.null{
+    display: ;
+}
 #del_basket{
     justify-content: end;
     font-size: 100%;
     padding: 3% 5%;
-
 }
+
 .del_basket{
     padding-right: 12px;
     text-align: center;

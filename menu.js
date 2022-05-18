@@ -72,41 +72,41 @@ let myDiv = document.getElementsByClassName("myDiv");
 //       클릭시 메뉴 가격,이름 변경
 function addice() {
   const hidden_img = document.getElementsByName("hidden_img");
+  const hidden_ice = document.getElementsByName("hidden_ice");
+  const hidden_hot = document.getElementsByName("hidden_hot");
   alert("      아이스 추가+500원");
   let iceadd = document.getElementsByClassName("menu_price");
-  let ice_price = document.getElementsByClassName("ice_price");
   for (let i = 0; i < iceadd_name.length - 3; i++) {
-    hidden_img[i].classList.remove("hidden_img");
-    hidden_img[i].classList.add("hidden_img_size");
+    hidden_img[i].classList.remove("hidden_img"); // hidden_img 라는 클래스를 지운다 = none을 없앰
+    hidden_img[i].classList.add("hidden_img_size"); // hidden_img_size 라는 클래스를 추가한다
+    hidden_ice[i].classList.remove("hidden_ice");
+    hidden_hot[i].classList.add("hidden_hot");
   }
   for (let i = 0; i < iceadd.length; i++) {
     iceadd[i].innerHTML = "M=3,500원 L=4,500원";
-    ice_price[i].textContent = "";
   }
   let iceadd2 = document.getElementsByClassName("menu_price1");
   let ice_price2 = document.getElementsByClassName("ice_price1");
   for (let i = 0; i < iceadd2.length; i++) {
     iceadd2[i].innerHTML = "M=4,000원 L=5,000원";
-    ice_price2[i].textContent = "";
   }
   add_temp = 1;
 }
 function addhot() {
   let hotadd = document.getElementsByClassName("menu_price");
-  let ice_price = document.getElementsByClassName("ice_price");
   for (let i = 0; i < iceadd_name.length - 3; i++) {
     hidden_img[i].classList.add("hidden_img");
+    hidden_ice[i].classList.add("hidden_ice");
+    hidden_hot[i].classList.remove("hidden_hot");
   }
 
   for (let i = 0; i < hotadd.length; i++) {
     hotadd[i].innerHTML = "M=3,000원 L=4,000원";
-    ice_price[i].textContent = "아이스 +500원";
   }
   let hotadd2 = document.getElementsByClassName("menu_price1");
   let ice_price2 = document.getElementsByClassName("ice_price1");
   for (let i = 0; i < hotadd2.length; i++) {
     hotadd2[i].innerHTML = "M=3,500원 L=4,500원";
-    ice_price2[i].textContent = "아이스 +500원";
   }
   add_temp = 0;
 }

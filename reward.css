@@ -17,9 +17,9 @@ section{
 }
 #bill_num{
     display: flex;
-    align-self: flex-start;
-    padding-left: 8px;
-    padding-top: 8px;
+    align-self: flex-end;
+    padding-right: 8px;
+    padding-bottom: 8px;
 }
 #final_price{
     display: flex;
@@ -32,6 +32,12 @@ section{
     align-self: flex-end;
     padding-right: 8px;
     padding-bottom: 8px;
+}
+#user_name{
+    display: flex;
+    align-self: flex-start;
+    padding-left: 8px;
+    padding-top: 8px;
 }
 .search-bar{
     width: 250px;

@@ -60,14 +60,9 @@
       영수증 번호를 입력하세요
 
       <div>
-        <form id="결제내역">
-          <input
-            type="text"
-            id="form-control"
-            placeholder="영수증 번호"
-            aria-label="영수증 번호"
-            aria-describedby="button-addon2"
-          />
+        <form onkeyup="if(window.event.keyCode==13){look_bill()}" id="결제내역">
+          <input type="text" id="form-control" placeholder="영수증 번호" />
+          <input type="text" style="display: none" />
         </form>
       </div>
       <button
@@ -76,17 +71,18 @@
         type="button"
         onclick="look_bill();"
       >
-        serch!
+        조회
       </button>
     </section>
 
     <footer style="margin-top: 30px">
       <div id="back_img">
-        <div id="bill_num"></div>
+        <div id="user_name"></div>
         <br />
         <ul id="reward"></ul>
         <br />
         <div id="final_price"></div>
+        <div id="bill_num"></div>
         <div id="date"></div>
       </div>
     </footer>

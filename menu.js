@@ -1,5 +1,6 @@
 "use strict";
 //선언
+let user_name;
 let set_arr = new Set([]);
 let total_cnt = []; //총 수량으로 ;
 let ea_ct = {};
@@ -433,9 +434,9 @@ function pay_go() {
   let right_Now = new Date();
   let time =
     right_Now.getFullYear() +
-    "-" +
+    "년 " +
     (right_Now.getMonth() + 1) +
-    "-" +
+    "월 " +
     right_Now.getDate() +
     " " +
     right_Now.getHours() +
@@ -455,8 +456,10 @@ function pay_go() {
     ];
     server.push(bill_num);
   }
+  server.push(user_name);
   server.push(time);
   server.push(document.getElementById("final_price").value);
+
   localStorage.setItem(random, JSON.stringify(server));
   localStorage.setItem("영수증번호", random);
   // JSON.parse(localStorage.getItem(Date.now()));
@@ -480,4 +483,19 @@ function go_tea() {
 function go_ade() {
   const go_tab = document.getElementById("ade");
   go_tab.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function start_order() {
+  let random = String(parseInt(Math.random() * 100)).padStart(1, "0");
+  let user_name_select = prompt(
+    "메뉴가 준비되면\n이곳에 적힌 닉네임으로 불러드립니다\n작성 안하셔도 되요",
+    ""
+  );
+  if (user_name_select) {
+    user_name = user_name_select;
+    alert(user_name + "님 반갑습니다");
+  } else {
+    user_name = random;
+    alert(random + "님 반갑습니다");
+  }
 }

@@ -24,8 +24,10 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <!-- my js -->
+    <script src="home.js"></script>
   </head>
-  <body>
+  <body onload="user_name()">
     <section class="back_img">
       <header>
         <h1><span>지니</span><span>나무</span></h1>
@@ -36,11 +38,20 @@
             Menu
           </button>
         </div>
-        <div id="bill_sct">
+        <div id="menu_sct">
           <button class="btn btn-warning" onclick="location.href='reward.html'">
             영수증 조회
           </button>
+
           <!-- <button onclick="location.href='random.html'">추천메뉴</button> -->
+        </div>
+        <div id="menu_sct">
+          <button
+            class="btn btn-warning"
+            onclick="location.href='re_credit_id.html'"
+          >
+            ID 재설정
+          </button>
         </div>
       </main>
     </section>

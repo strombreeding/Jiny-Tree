@@ -459,7 +459,6 @@ function pay_go() {
   server.push(user_name);
   server.push(time);
   server.push(document.getElementById("final_price").value);
-
   localStorage.setItem(random, JSON.stringify(server));
   localStorage.setItem("영수증번호", random);
   // JSON.parse(localStorage.getItem(Date.now()));
@@ -486,16 +485,15 @@ function go_ade() {
 }
 
 function start_order() {
-  let random = String(parseInt(Math.random() * 100)).padStart(1, "0");
-  let user_name_select = prompt(
-    "메뉴가 준비되면\n이곳에 적힌 닉네임으로 불러드립니다\n작성 안하셔도 되요",
-    ""
-  );
-  if (user_name_select) {
-    user_name = user_name_select;
-    alert(user_name + "님 반갑습니다");
-  } else {
-    user_name = random;
-    alert(random + "님 반갑습니다");
+  const user_id = localStorage.getItem("ID");
+  if (localStorage.getItem("결제") == "실패") {
+    alert(
+      "저런..! 결제도중 오류가 일어났었군요?!\n 괜찮아요 " +
+        user_id +
+        "님, 다시해볼까요?"
+    );
+    localStorage.removeItem("결제");
+  } else if (localStorage.getItem("ID") != null) {
+    alert("어서오세요 " + user_id + "님!");
   }
 }

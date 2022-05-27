@@ -18,9 +18,9 @@ body:after{
     right: 0;
     z-index: -1;
     background: url(https://github.com/strombreeding/Jiny-Tree/blob/main/img/realback%20cum.jpg?raw=true)center top;
-    /* -webkit-background-size: cover;
+    -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover; */
+    -o-background-size: cover;
     background-size: cover;
 }
 

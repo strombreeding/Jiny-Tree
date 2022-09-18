@@ -1,0 +1,73 @@
+*{
+    text-align: center;
+}
+
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#back_img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    margin: 10px;
+}
+#bill_num{
+    display: flex;
+    align-self: flex-end;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+#final_price{
+    display: flex;
+    align-self: flex-end;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+#date{
+    display: flex;
+    align-self: flex-end;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+#user_name{
+    display: flex;
+    align-self: flex-start;
+    padding-left: 8px;
+    padding-top: 8px;
+}
+.search-bar{
+    width: 250px;
+    left: 20px;
+}
+
+nav{
+    font-size: 33px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    color: white;
+    background-color: rgb(15, 17, 15);
+    
+}
+.home_btn{
+    text-align: left;
+    display: inline;
+}
+h1{
+    display: inline;
+}
+#div1{
+    display: inline;
+    text-align: left
+}
+#reward{
+    flex-direction: row;
+
+}
+#btn{
+    text-align: center;
+}

@@ -4,6 +4,13 @@ block style
 block content
     body(id="parent" ,onload="start_order()")
         include header
+            block nav
+            li(class="nav-item")
+                a(class="nav-link", aria-current="page" , onclick="go_coffee();") coffee
+            li(class="nav-item")
+                a(class="nav-link" , onclick="go_tea();") tea
+            li(class="nav-item")
+                a(class="nav-link", onclick="go_ade();") ade
         ul(class="ul_menu")
             li(class="li_munu") 메뉴의 사이즈를 클릭하면 장바구니에 GET!
             li(class="li_munu") *추가 금액 발생br -아이스 +500원br -L사이즈 +1000원
@@ -16,26 +23,29 @@ block content
         h1(id="coffee") Coffee
         div
             h3
-                img( id="menu_pic" class="" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[94]_20210430103337006.jpg")
-                img( id="menu_pic" class="hidden_ice" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[110563]_20210426095937808.jpg")
-                img( class="hidden_img", name="hidden_img",src="https://github.com/strombreeding/Jiny-Tree/blob/main/img(/KakaoTalk_20220429_162919725.png?raw=true")
+                img(id="menu_pic", class="" ,name="hidden_hot" ,src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[94]_20210430103337006.jpg")
+                img(id="menu_pic" ,class="hidden_ice", name="hidden_ice" ,src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110563]_20210426095937808.jpg")
+                img(class="hidden_img", name="hidden_img",src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true")
                 div(class="menu_name") 아메리카노
                     div(class="menu_price") M=3,000원 L=4,000원
             div(class="test")
                 button(name="btn", class="btn btn-secondary" ,id="아메리카노M" ,onClick="reply_click(this.id)") M
                 button(name="btn", class="btn btn-secondary" ,id="아메리카노L" ,onClick="reply_click(this.id)") L
             h3(id="capu")
-                img(id="menu_pic", class="", name="hidden_hot" ,src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[38]_20210415154821846.jpg")
-                img( id="menu_pic", class="hidden_ice", name="hidden_ice" ,src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[110601]_20210415143400773.jpg")
-                img( class="hidden_img", name="hidden_img",src="https://github.com/strombreeding/Jiny-Tree/blob/main/img(/KakaoTalk_20220429_162919725.png?raw=true")
+                img(id="menu_pic", class="", name="hidden_hot" ,src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[38]_20210415154821846.jpg")
+                img( id="menu_pic", class="hidden_ice", name="hidden_ice" ,src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110601]_20210415143400773.jpg")
+                img( class="hidden_img", name="hidden_img",src="https://github.com/strombreeding/Jiny-Tree/blob/main/img/KakaoTalk_20220429_162919725.png?raw=true")
                 div(class="menu_name") 카푸치노
                     div(class="menu_price") M=3,000원 L=4,000원
+            div(class="test")
+                button(name="btn", class="btn btn-secondary" ,id="카푸치노M" ,onClick="reply_click(this.id)") M
+                button(name="btn", class="btn btn-secondary" ,id="카푸치노L" ,onClick="reply_click(this.id)") L
         footer
             h2(class="basket") 장바구니
             section(id="basket")
             div(class="del_basket")
-            button(id="del_basket", class="btn btn-secondary", onclick="del_basket();")
-                i(class="fa-solid.fa-basket-shopping") 비우기
+                button(id="del_basket", class="btn btn-secondary", onclick="del_basket();")
+                    i(class="fa-solid fa-basket-shopping") 비우기
             div(id="re")
                 ul(id="optionControl")
 

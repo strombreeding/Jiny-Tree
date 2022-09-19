@@ -1,5 +1,6 @@
 "use strict";
 //선언
+console.log("menbu")
 let user_name;
 let set_arr = new Set([]);
 let total_cnt = []; //총 수량으로 ;
@@ -8,55 +9,14 @@ let ea_pc = {};
 let for_temp = ["따뜻한", "아이스"]; //order()에 사용됨;
 const menu_Lsize_arr = [
   "아이스 아메리카노L",
-  "아이스 콜드브루L",
-  "아이스 카페라떼L",
-  "아이스 카라멜마끼야또L",
-  "아이스 캐모마일L",
-  "아이스 블랙퍼스트L",
-  "아이스 유자차L",
-  "아이스 자몽차L",
-  "아이스 레몬에이드L",
-  "아이스 라임에이드L",
-  "아이스 자몽에이드L",
+  "아이스 카푸치노L",
   "따뜻한 아메리카노L",
-  "따뜻한 콜드브루L",
-  "따뜻한 카페라떼L",
-  "따뜻한 카라멜마끼야또L",
-  "따뜻한 캐모마일L",
-  "따뜻한 블랙퍼스트L",
-  "따뜻한 유자차L",
-  "따뜻한 자몽차L",
-];
-const premium_menu_arr = [
-  "아이스 카페라떼M",
-  "아이스 카페라떼L",
-  "아이스 카라멜마끼야또M",
-  "아이스 카라멜마끼야또L",
-  "따뜻한 카페라떼M",
-  "따뜻한 카페라떼L",
-  "따뜻한 카라멜마끼야또M",
-  "따뜻한 카라멜마끼야또L",
 ];
 const menu_arr = [
   "아이스 아메리카노M",
-  "아이스 콜드브루M",
-  "아이스 카페라떼M",
-  "아이스 카라멜마끼야또M",
-  "아이스 캐모마일M",
-  "아이스 블랙퍼스트M",
-  "아이스 유자차M",
-  "아이스 자몽차M",
-  "아이스 레몬에이드M",
-  "아이스 라임에이드M",
-  "아이스 자몽에이드M",
+  "아이스 카푸치노M",
   "따뜻한 아메리카노M",
-  "따뜻한 콜드브루M",
-  "따뜻한 카페라떼M",
-  "따뜻한 카라멜마끼야또M",
-  "따뜻한 캐모마일M",
-  "따뜻한 블랙퍼스트M",
-  "따뜻한 유자차M",
-  "따뜻한 자몽차M",
+  "따뜻한 카푸치노M",
 ];
 let ea_price = document.getElementsByName("sum");
 let add_temp = 0; //addice(),addhot(),reply_click()에서 주로 사용됨
@@ -72,12 +32,14 @@ let quan = document.getElementsByClassName("quan");
 let myDiv = document.getElementsByClassName("myDiv");
 //       클릭시 메뉴 가격,이름 변경
 function addice() {
+  console.log("아이스 추가")
   const hidden_img = document.getElementsByName("hidden_img");
   const hidden_ice = document.getElementsByName("hidden_ice");
   const hidden_hot = document.getElementsByName("hidden_hot");
+  console.log(hidden_img,hidden_ice,hidden_hot)
   alert("      아이스 추가+500원");
   let iceadd = document.getElementsByClassName("menu_price");
-  for (let i = 0; i < iceadd_name.length - 3; i++) {
+  for (let i = 0; i < iceadd_name.length ; i++) {
     hidden_img[i].classList.remove("hidden_img"); // hidden_img 라는 클래스를 지운다 = none을 없앰
     hidden_img[i].classList.add("hidden_img_size"); // hidden_img_size 라는 클래스를 추가한다
     hidden_ice[i].classList.remove("hidden_ice");
@@ -95,7 +57,7 @@ function addice() {
 }
 function addhot() {
   let hotadd = document.getElementsByClassName("menu_price");
-  for (let i = 0; i < iceadd_name.length - 3; i++) {
+  for (let i = 0; i < iceadd_name.length ; i++) {
     hidden_img[i].classList.add("hidden_img");
     hidden_ice[i].classList.add("hidden_ice");
     hidden_hot[i].classList.remove("hidden_hot");
@@ -215,13 +177,6 @@ function reply_click(clicked_id) {
           break;
         }
       }
-      //비싼메뉴 선택
-      for (let x = 0; x < premium_menu_arr.length; x++) {
-        if (premium_menu_arr[x] == 고유값) {
-          default_price += 500;
-          break;
-        }
-      }
       // L사이즈 선택
       for (let r = 0; r < menu_Lsize_arr.length; r++) {
         if (고유값 == menu_Lsize_arr[r]) {
@@ -246,12 +201,6 @@ function reply_click(clicked_id) {
     } else if (add_temp == 1) {
       for (let i = 0; i < menu_arr.length; i++) {
         if (고유값 == menu_arr[i]) {
-          default_price += 500;
-        }
-      }
-      //비싼메뉴 선택
-      for (let x = 0; x < premium_menu_arr.length; x++) {
-        if (premium_menu_arr[x] == 고유값) {
           default_price += 500;
         }
       }
@@ -441,7 +390,7 @@ function pay_go() {
   localStorage.setItem("영수증번호", random);
   // JSON.parse(localStorage.getItem(Date.now()));
   window.name = "menu";
-  window.open("run_moduel.html", "주문표 확인"); // 결제모듈 실행
+  window.location.href="run_moduel.html" // 결제모듈 실행
   localStorage.setItem(
     "주문",
     document.getElementById("final_price").value * 0.01

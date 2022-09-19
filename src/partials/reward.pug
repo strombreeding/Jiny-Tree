@@ -1,0 +1,23 @@
+extends base
+block style 
+  link(rel="stylesheet", href="src/css/menu.css")
+block content
+    body
+        include header
+    section 영수증 번호를 입력하세요
+      div
+        form(onkeyup="if(window.event.keyCode==13){look_bill()}",id="결제내역")
+          input(type="text",id="form-control", placeholder="영수증 번호" )
+          input(type="text", style="display: none" )
+      button(id="btn", style="margin-top: 5px", type="button",  onclick="look_bill();") 조회
+    footer( style="margin-top: 30px")
+      div(id="back_img")
+        div(id="user_name")
+        br 
+        ul(id="reward")
+        br 
+        div(id="final_price")
+        div(id="bill_num")
+        div(id="date")
+block script 
+    script(src="src/js/reward.js") 

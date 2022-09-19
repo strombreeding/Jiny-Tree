@@ -19,6 +19,6 @@ function copy_clip() {
   document.execCommand("copy");
   window.localStorage.removeItem("주문");
   window.localStorage.removeItem("영수증번호");
-  location.href = "https://jineecafe.netlify.app/reward.html";
+  location.href = "https://strombreeding.github.io/Jiny-Tree/reward.html";
   double += 1;
 }

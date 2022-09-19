@@ -1,0 +1,11 @@
+extends base
+block style 
+  link(rel="stylesheet", href="src/css/pay_end.css")
+block content
+    body 
+        include header 
+        main(id="board")
+            button(id="copy_btn", class="btn btn-info", onclick="copy_clip();") 영수증 번호 복사하기
+        footer(id="btn")
+block script    
+    script(src="src/js/pay_end.js") 

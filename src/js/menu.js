@@ -356,23 +356,26 @@ function del_basket() {
   }
 }
 
+var IMP = window.IMP; 
+IMP.init("imp99951373"); 
+
 // '주문하러가기!' 버튼 클릭시 실행
 function pay_go() {
   let right_Now = new Date();
   let time =
-    right_Now.getFullYear() +
-    "년 " +
-    (right_Now.getMonth() + 1) +
-    "월 " +
-    right_Now.getDate() +
-    " " +
-    right_Now.getHours() +
-    "시 " +
-    right_Now.getMinutes() +
-    "분 " +
-    right_Now.getSeconds() +
-    "초";
-
+  right_Now.getFullYear() +
+  "년 " +
+  (right_Now.getMonth() + 1) +
+  "월 " +
+  right_Now.getDate() +
+  " " +
+  right_Now.getHours() +
+  "시 " +
+  right_Now.getMinutes() +
+  "분 " +
+  right_Now.getSeconds() +
+  "초";
+  
   let random = String(parseInt(Math.random() * 1000000)).padStart(6, "0");
   let server = [];
   for (let i = 0; i < quan.length; i++) {
@@ -390,15 +393,47 @@ function pay_go() {
   localStorage.setItem("영수증번호", random);
   // JSON.parse(localStorage.getItem(Date.now()));
   window.name = "menu";
-  window.location.href="run_moduel.html" // 결제모듈 실행
+  // window.location.href="run_moduel.html" // 결제모듈 실행
   localStorage.setItem(
     "주문",
     document.getElementById("final_price").value * 0.01
-  );
-}
-
-//navBar
-function go_coffee() {
+    );
+    requestPay()
+  }
+  function requestPay() {
+    let price = localStorage.getItem(`주문`);
+    if(price==="0"||price===undefined){
+      return alert("메뉴를 담고 결제해주세요")
+    }
+      IMP.request_pay({
+          pg : 'kcp',
+          pay_method : 'card',
+          merchant_uid: "57008833-33004", 
+          name : '지니나무',
+          amount : price,
+          buyer_email : 'Iamport@chai.finance',
+          buyer_name : '아임포트 기술지원팀',
+          buyer_tel : '010-1234-5678',
+          buyer_addr : '서울특별시 강남구 삼성동',
+          buyer_postcode : '123-456'
+      }, function (rsp) { // callback
+          if (rsp.success) {
+              console.log(rsp);
+              var msg = "결제가 완료되었습니다.\n";
+              msg += "결제 금액 : " + rsp.paid_amount;
+              msg += "\n" + "영수증 번호 : " + localStorage.getItem("영수증번호");
+              localStorage.removeItem("결제");
+          } else {
+              console.log(rsp);
+              var msg = "결제에 실패하였습니다.";
+              msg += "에러내용 : " + rsp.error_msg;
+              localStorage.setItem("결제", "실패");
+          }
+          // location.href = "http://127.0.0.1:5500/pay_end.html";
+      });
+  }
+  //navBar
+  function go_coffee() {
   const go_tab = document.getElementById("coffee");
   go_tab.scrollIntoView({ behavior: "smooth", block: "start" });
 }

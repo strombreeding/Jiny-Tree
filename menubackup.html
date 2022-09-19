@@ -22,9 +22,9 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item"><a class="nav-link" aria-current="page" onclick="go_coffee();">coffee</a></li>
-                  <li class="nav-item"><a class="nav-link" onclick="go_tea();">tea</a></li>
-                  <li class="nav-item"><a class="nav-link" onclick="go_ade();">ade</a></li>
+                  <li class="nav-item"><a class="nav-link" aria-current="page" href="#" onclick="go_coffee();">coffee</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#" onclick="go_tea();">tea</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#" onclick="go_ade();">ade</a></li>
                 </ul>
               </div>
             </div></a></div>
@@ -39,39 +39,48 @@
       <button class="btn btn-primary" id="아이스" onClick="addice()"><i class="fa-solid fa-glass-water"></i></button>
     </article>
     <main id="coffee"></main>
-    <h1 id="coffee">Coffee</h1>
-    <div>
-      <h3><img id="menu_pic" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[94]_20210430103337006.jpg"><img class="hidden_ice" id="menu_pic" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[110563]_20210426095937808.jpg"><img class="hidden_img" name="hidden_img" src="https://github.com/strombreeding/Jiny-Tree/blob/main/img(/KakaoTalk_20220429_162919725.png?raw=true">
-        <div class="menu_name">아메리카노
-          <div class="menu_price">M=3,000원 L=4,000원</div>
+    <h1 id="coffee">Coffee
+      <div>
+        <h3><img id="menu_pic" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[94]_20210430103337006.jpg"><img class="hidden_ice" id="menu_pic" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[110563]_20210426095937808.jpg"><img class="hidden_img" name="hidden_img" src="https://github.com/strombreeding/Jiny-Tree/blob/main/img(/KakaoTalk_20220429_162919725.png?raw=true">
+          <div class="menu_name">아메리카노
+            <div class="menu_price">M=3,000원 L=4,000원</div>
+          </div>
+        </h3>
+        <div class="test">
+          <button class="btn btn-secondary" name="btn" id="아메리카노M" onClick="reply_click(this.id)">M</button>
+          <button class="btn btn-secondary" name="btn" id="아메리카노L" onClick="reply_click(this.id)">L</button>
         </div>
-      </h3>
-      <div class="test">
-        <button class="btn btn-secondary" name="btn" id="아메리카노M" onClick="reply_click(this.id)">M</button>
-        <button class="btn btn-secondary" name="btn" id="아메리카노L" onClick="reply_click(this.id)">L</button>
+        <h3 id="capu"><img id="menu_pic" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[38]_20210415154821846.jpg"><img class="hidden_ice" id="menu_pic" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[110601]_20210415143400773.jpg"><img class="hidden_img" name="hidden_img" src="https://github.com/strombreeding/Jiny-Tree/blob/main/img(/KakaoTalk_20220429_162919725.png?raw=true">
+          <div class="menu_name">카푸치노
+            <div class="menu_price">M=3,000원 L=4,000원</div>
+          </div>
+        </h3>
       </div>
-      <h3 id="capu"><img id="menu_pic" name="hidden_hot" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[38]_20210415154821846.jpg"><img class="hidden_ice" id="menu_pic" name="hidden_ice" src="https://image.istarbucks.co.kr/upload/store/skuimg(/2021/04/[110601]_20210415143400773.jpg"><img class="hidden_img" name="hidden_img" src="https://github.com/strombreeding/Jiny-Tree/blob/main/img(/KakaoTalk_20220429_162919725.png?raw=true">
-        <div class="menu_name">카푸치노
-          <div class="menu_price">M=3,000원 L=4,000원</div>
-        </div>
-      </h3>
-    </div>
+    </h1>
     <footer>
-      <h2 class="basket">장바구니</h2>
-      <section id="basket"></section>
-      <div class="del_basket"></div>
-      <button class="btn btn-secondary" id="del_basket" onclick="del_basket();"><i class="fa-solid.fa-basket-shopping">비우기</i></button>
-      <div id="re">
-        <ul id="optionControl"></ul>
-      </div>
-      <div id="total_price" style="padding-right: 8px; padding-bottom: 30px;">총 결제금액
-        <input style="width: 60px;" id="final_price" value="0" readonlyspan><span>원</span>
-      </div>
+      <h2 class="basket">장바구니
+        <section id="basket"></section>
+        <div class="del_basket"></div>
+        <button class="btn btn-secondary" id="del_basket" onclick="del_basket();"><i class="fa-solid fa-basket-shopping">비우기</i></button>
+        <div id="re">
+          <ul id="optionControl"></ul>
+        </div>
+        <div id="total_price" style="padding-right: 8px; padding-bottom: 30px;">총 결제금액input style="width: 60px;" id="final_price" value="0"  readonlyspan원/span/div</div>
+      </h2>
       <div id="pay-button-좌표" style="padding-bottom: 30px;">
         <button id="pay_button" onclick="pay_go();">주문하러 가기!</button>
       </div>
       <div>음료 사진 출처 :(스타벅스) https://www.starbucks.co.kr/menu/drink_list.do </div>
     </footer>
   </body>
-  <script src="src/js/menu.js"> </script>
+  <script>if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js') // serviceWorker 파일 경로
+            .then((reg) => {
+                console.log('Service worker registered.', reg);
+            })
+            .catch(e => console.log(e));
+    });
+}
+  </script>
 </html>

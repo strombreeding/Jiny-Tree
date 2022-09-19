@@ -1,0 +1,4 @@
+{
+    "compile-hero.pug-output-directory": "../../",
+    "compile-hero.scss-output-directory": "../css"
+}

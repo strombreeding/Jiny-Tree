@@ -3,22 +3,15 @@
   font-family: 'Jua', sans-serif; 
 }
 
-  .back_img{
-    height: 800px;
-    background-image: url('https://github.com/strombreeding/Jiny-Tree/blob/main/img/realback%20cum.jpg?raw=true');
-  }
-@media screen and (max-width: 400px ){
-  .back_img{
-
-    height: 800px;
-    background-image: url('https://github.com/strombreeding/Jiny-Tree/blob/main/img/img_src/realback.jpg?raw=true');
-  }
-}
 header {
   font-size: 33px;
   text-align: center;
   color: white;
-
+}
+#nav_bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 #menu_sct{
   display: flex;
@@ -30,7 +23,6 @@ header {
   position: relative;
 } 
 main{
-
   justify-content: space-around;
   display: flex;
 
@@ -45,6 +37,7 @@ h1 {
 body {
   text-align: center;
   margin: 0;
+  background-color: #E5C58A;
 }
 button {
   width: 100px;

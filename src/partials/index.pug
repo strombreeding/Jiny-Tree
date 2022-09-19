@@ -1,0 +1,19 @@
+extends base
+block style 
+  link(rel="stylesheet", href="src/css/home.css")
+block content
+  body(onload="user_name()")
+        header 
+          h1
+            span 지니 
+            span 나무
+        main
+          div(id="menu_sct")
+            button(class="btn btn-warning" onclick="location.href='menu.html'") Menu
+          div(id="menu_sct")
+            button(class="btn btn-warning" onclick="location.href='reward.html'") 영수증 조회
+          div(id="menu_sct")
+            button(class="btn btn-warning",onclick="location.href='re_credit_id.html'")
+              ID 재설정
+block script 
+  script(src="src/js/home.js") 

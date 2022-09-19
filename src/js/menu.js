@@ -113,28 +113,6 @@ function addhot() {
 }
 //사이즈 클릭시 발생 ~117
 function reply_click(clicked_id) {
-  let 에이드 = document.getElementsByClassName("에이드");
-  let for_ade_temp_arr = [
-    에이드[0].innerHTML,
-    에이드[1].innerHTML,
-    에이드[2].innerHTML,
-    에이드[3].innerHTML,
-    에이드[4].innerHTML,
-    에이드[5].innerHTML,
-  ];
-
-  //에이드를 클릭했을때 아이스로만 나올 수 있게 해주는 함수
-  function 리턴() {
-    for (let i = 0; i < for_ade_temp_arr.length; i++) {
-      //for_ade_temp_arr==click+id 를 비교만해줌 length만큼.. 맞을경우 s=1
-      if (clicked_id == for_ade_temp_arr[i]) {
-        for_ade_temp = 1;
-        break;
-      }
-    }
-  }
-  리턴();
-
   //function order = [컨펌-장바구니이동],[장바구니에 옵션+이름div생성], [고유값 지정=옵션+클릭메뉴]
   function order(for_temp) {
     //사이즈 선택시 컨펌팝업, 컨펌시 장바구니로 이동

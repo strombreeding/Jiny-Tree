@@ -23,8 +23,8 @@
         amount: price, //판매 가격
         buyer_name: "구매자이름",
         buyer_tel: "010-1234-5678",
-        m_redirect_url: (src = "http://127.0.0.1:5500/pay_end.html"),
-        // m_redirect_url: (src = "https://strombreeding.github.io/Jiny-Tree/pay_end.html"),
+        // m_redirect_url: (src = "http://127.0.0.1:5500/pay_end.html"),
+        m_redirect_url: (src = "https://strombreeding.github.io/Jiny-Tree/pay_end.html"),
       },
       function (rsp) {
         if (rsp.success) {
@@ -39,8 +39,8 @@
           window.close();
         }
         alert(msg);
-        // location.href = "https://strombreeding.github.io/Jiny-Tree/pay_end.html";
-        location.href = "http://127.0.0.1:5500/pay_end.html";
+        location.href = "https://strombreeding.github.io/Jiny-Tree/pay_end.html";
+        // location.href = "http://127.0.0.1:5500/pay_end.html";
       }
     );
   </script>

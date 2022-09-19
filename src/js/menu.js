@@ -402,13 +402,14 @@ function pay_go() {
   }
   function requestPay() {
     let price = localStorage.getItem(`주문`);
+    let merchant_uid = localStorage.getItem("영수증번호")
     if(price==="0"||price===undefined){
       return alert("메뉴를 담고 결제해주세요")
     }
       IMP.request_pay({
           pg : 'kcp',
           pay_method : 'card',
-          merchant_uid: "57008833-33004", 
+          merchant_uid, 
           name : '지니나무',
           amount : price,
           buyer_email : 'Iamport@chai.finance',
@@ -451,14 +452,5 @@ function go_ade() {
 
 function start_order() {
   const user_id = localStorage.getItem("ID");
-  if (localStorage.getItem("결제") == "실패") {
-    alert(
-      "저런..! 결제도중 오류가 일어났었군요?!\n 괜찮아요 " +
-        user_id +
-        "님, 다시해볼까요?"
-    );
-    localStorage.removeItem("결제");
-  } else if (localStorage.getItem("ID") != null) {
-    alert("어서오세요 " + user_id + "님!");
-  }
+  
 }

@@ -21,6 +21,6 @@ self.addEventListener('fetch', (event) => {
         fetch(event.request)
             .catch(() => {
                 return caches.open(CACHE_NAME)
-                    .then((cache) => cache.match('/2eum/offline.html'));
+                    .then((cache) => cache.match('/Jini-Tree/offline.html'));
             }))
 });

@@ -416,8 +416,7 @@ function pay_go() {
           buyer_tel : '010-1234-5678',
           buyer_addr : '서울특별시 구 동',
           buyer_postcode : '123-456',
-         m_redirect_url: (src = "https://strombreeding.github.io/Jiny-Tree/pay_end.html"),
-
+          m_redirect_url:"https://strombreeding.github.io/Jiny-Tree/pay_end.html",
       }, function (rsp) { // callback
           if (rsp.success) {
               console.log(rsp);

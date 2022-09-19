@@ -412,10 +412,12 @@ function pay_go() {
           name : '지니나무',
           amount : price,
           buyer_email : 'Iamport@chai.finance',
-          buyer_name : '아임포트 기술지원팀',
+          buyer_name : '지니나무',
           buyer_tel : '010-1234-5678',
-          buyer_addr : '서울특별시 강남구 삼성동',
-          buyer_postcode : '123-456'
+          buyer_addr : '서울특별시 구 동',
+          buyer_postcode : '123-456',
+         m_redirect_url: (src = "https://strombreeding.github.io/Jiny-Tree/pay_end.html"),
+
       }, function (rsp) { // callback
           if (rsp.success) {
               console.log(rsp);
@@ -428,7 +430,9 @@ function pay_go() {
               var msg = "결제에 실패하였습니다.";
               msg += "에러내용 : " + rsp.error_msg;
               localStorage.setItem("결제", "실패");
-          }
+            }
+            alert(msg);
+            location.href = "https://strombreeding.github.io/Jiny-Tree/pay_end.html";
           // location.href = "http://127.0.0.1:5500/pay_end.html";
       });
   }

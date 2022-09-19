@@ -1,6 +1,8 @@
 extends base
 block style 
-  link(rel="stylesheet", href="src/css/menu.css")
+  link(rel="stylesheet", href="src/css/reward.css")
+block title
+  title 지니나무
 block content
     body
         include header
@@ -10,8 +12,7 @@ block content
           input(type="text",id="form-control", placeholder="영수증 번호" )
           input(type="text", style="display: none" )
       button(id="btn", style="margin-top: 5px", type="button",  onclick="look_bill();") 조회
-    footer( style="margin-top: 30px")
-      div(id="back_img")
+      div.hidden(id="back_img")
         div(id="user_name")
         br 
         ul(id="reward")

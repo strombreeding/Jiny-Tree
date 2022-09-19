@@ -429,6 +429,7 @@ function pay_go() {
               console.log(rsp);
               var msg = "결제에 실패하였습니다.";
               msg += "에러내용 : " + rsp.error_msg;
+              localStorage.clear()
               localStorage.setItem("결제", "실패");
             }
             alert(msg);
